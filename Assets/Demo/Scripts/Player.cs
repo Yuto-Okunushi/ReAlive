@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float turnSpeed = 0.5f;
+    public float walkSpeed = 5f;  // 通常の移動速度
+    public float runSpeed = 10f;  // 走る時の移動速度
+    public Camera playerCamera;   // プレイヤーカメラの参照
+
+    void Start()
+    {
+        // ゲーム開始時にマウスカーソルを消してロックする
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     void Update()
     {
         // プレイヤー移動の正規化
         Vector3 moveDirection = GetNormalizedInput();
         Move(moveDirection);
-
-        // プレイヤーの向きを移動方向に向ける
-        if (moveDirection != Vector3.zero)
-        {
-            Turn(moveDirection);
-        }
     }
 
     // 正規化されたプレイヤー移動の関数
@@ -32,19 +34,24 @@ public class Player : MonoBehaviour
             moveDirection.Normalize();
         }
 
-        return moveDirection;
+        // カメラの向きに基づいて移動方向を調整
+        Vector3 forward = playerCamera.transform.forward;
+        Vector3 right = playerCamera.transform.right;
+
+        forward.y = 0f; // 上下の移動を無視
+        right.y = 0f; // 上下の移動を無視
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 desiredMoveDirection = forward * moveDirection.z + right * moveDirection.x;
+        return desiredMoveDirection;
     }
 
     // プレイヤーを移動させる関数
     void Move(Vector3 direction)
     {
-        transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
-    }
-
-    // プレイヤーの向きを移動方向に向ける関数
-    void Turn(Vector3 direction)
-    {
-        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, moveSpeed * turnSpeed * Time.deltaTime);
+        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+        transform.Translate(direction * currentSpeed * Time.deltaTime, Space.World);
     }
 }
