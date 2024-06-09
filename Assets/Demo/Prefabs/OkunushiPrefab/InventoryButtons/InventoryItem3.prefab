@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5057012949598824032}
   - component: {fileID: 5057012949598824033}
   - component: {fileID: 5057012949598824038}
+  - component: {fileID: -5197885175200459385}
   m_Layer: 5
   m_Name: InventoryItem3
   m_TagString: Untagged
@@ -122,6 +123,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-5197885175200459385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057012949598824036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8704ca1fedf6049941002ad75e93d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDatabase: {fileID: 11400000, guid: 5ea3547c43579a74a87675ecb707ed3e, type: 2}
 --- !u!1 &5057012951256429542
 GameObject:
   m_ObjectHideFlags: 0
