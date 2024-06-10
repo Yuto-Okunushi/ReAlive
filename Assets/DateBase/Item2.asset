@@ -17,4 +17,4 @@ MonoBehaviour:
   hp: 50
   hydration: 10
   food: 50
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: e4333fb6a4a7bbf46ad1ba4e6f59c351, type: 3}
