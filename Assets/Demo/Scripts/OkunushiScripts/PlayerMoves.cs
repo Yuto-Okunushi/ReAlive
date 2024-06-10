@@ -5,7 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerMoves : MonoBehaviour
 {
-    [SerializeField] Canvas inventory;
+    [SerializeField] Canvas shopcanvs;
+    [SerializeField] GameObject shopobject;
+    [SerializeField] GameObject inventory;
+    [SerializeField] Timer timer;
+    [SerializeField] Moisturegauge moisturegauge;
+    [SerializeField] Foodgauge foodgauge;
 
     public float moveSpeed = 5f;
     public float turnSpeed = 10f;
@@ -23,10 +28,18 @@ public class PlayerMoves : MonoBehaviour
 
     void Update()
     {
-        Move();
-        Turn();
         ObjectOpen();
 
+        // shopcanvsがアクティブでない場合にのみ移動と回転を許可
+        if (!shopcanvs.gameObject.activeSelf && !inventory.gameObject.activeSelf)
+        {
+            Move();
+            Turn();
+            timer.TimerStartStop();
+            moisturegauge.MoisturegaugeStartStop();
+            foodgauge.FoodgaugeStartStop();
+        }
+        
     }
 
     void Move()
@@ -47,12 +60,29 @@ public class PlayerMoves : MonoBehaviour
         rb.MoveRotation(rb.rotation * Quaternion.Euler(rotation));
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == shopobject)
+        {
+            Openshopcanvs();
+        }
+    }
+
+    public void Openshopcanvs()
+    {
+        shopcanvs.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Debug.Log("Shop canvas opened");
+    }
+
     void ObjectOpen()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        // shopcanvsがアクティブでない場合にのみスペースキーの入力を受け付ける
+        if (!shopcanvs.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
             bool isActive = !inventory.gameObject.activeSelf;
-            inventory.gameObject.SetActive(!inventory.gameObject.activeSelf);
+            inventory.gameObject.SetActive(isActive);
             Debug.Log("スペースキーが押されました");
             if (isActive)
             {
