@@ -33,6 +33,7 @@ public class PlayerMoves : MonoBehaviour
             Move();
             Turn();
         }
+        
     }
 
     void Move()
