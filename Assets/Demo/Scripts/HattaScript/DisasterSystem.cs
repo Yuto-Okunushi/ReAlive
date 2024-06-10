@@ -1,12 +1,11 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class DisasterSystem : MonoBehaviour
 {
     public static DisasterSystem Instance { get; private set; } // シングルトンのインスタンス
 
     public Animator disasterAnim; // 災害発生アニメーション
-    public Animator evacAnim; // 避難フェーズアニメーション
     public Vector3 startPoint; // スタート地点
     public Vector3 destPoint; // 目的地
 
@@ -56,8 +55,7 @@ public class DisasterSystem : MonoBehaviour
         disasterTrig = false;
 
         // 準備フェーズのアニメーションを開始
-        PanelUI.Instance.gameObject.SetActive(true);
-        yield return StartCoroutine(PanelUI.PanelAnim());
+        yield return StartCoroutine(PanelUI.Instance.PrepAnim());
 
         // ランダムな時間待機 (3分から4分の間)
         float randomTime = UnityEngine.Random.Range(180f, 240f);
@@ -96,7 +94,10 @@ public class DisasterSystem : MonoBehaviour
     {
         UnityEngine.Debug.Log("準備フェーズ終了");
         // 準備フェーズを無効化
-        PanelUI.Instance.gameObject.SetActive(false);
+        if (PanelUI.Instance.prepPanel != null)
+        {
+            PanelUI.Instance.prepPanel.gameObject.SetActive(false);
+        }
     }
 
     // 避難フェーズの処理
@@ -104,9 +105,8 @@ public class DisasterSystem : MonoBehaviour
     {
         UnityEngine.Debug.Log("避難フェーズ開始");
 
-        // 避難フェーズを有効化
-        evacAnim.gameObject.SetActive(true);
-        evacAnim.SetTrigger("StartEvac");
+        // 避難フェーズのアニメーションを開始
+        yield return StartCoroutine(PanelUI.Instance.EvacAnim());
 
         float timer = evacTimer;
 
