@@ -1717,6 +1717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 685343455}
   - component: {fileID: 685343456}
+  - component: {fileID: 685343457}
   m_Layer: 5
   m_Name: Weight
   m_TagString: Untagged
@@ -1792,12 +1793,25 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1933714353}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &685343457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685343454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2144df96f331c44995fd6d0d8eadf52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weightslider: {fileID: 685343456}
 --- !u!1 &717062230
 GameObject:
   m_ObjectHideFlags: 0
@@ -6094,7 +6108,6 @@ MonoBehaviour:
   Item5: {fileID: 6986679705138425406, guid: daf29a4257364da40a0cf632909c6c54, type: 3}
   inventory: {fileID: 230953878}
   DisplayItem1: {fileID: 5431684663050100900, guid: d961b25bdf72d884185188a47e449701, type: 3}
-  Itemslot: {fileID: 0}
 --- !u!1 &2132488183
 GameObject:
   m_ObjectHideFlags: 0

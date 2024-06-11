@@ -17,50 +17,63 @@ public class ItemSpawns : MonoBehaviour
 
     //--インベントリでアイテムスロットに物を表示させるアイテムと親オブジェクト------
     [SerializeField] GameObject DisplayItem1;
-    [SerializeField] GameObject Itemslot;
+    //[SerializeField] GameObject Itemslot;
     //---------------------------------------------------------------
+
+    private int TotalItemcouts = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Displayitem();
     }
 
     public void Spawn1()
     {
         // Item1をinventoryの子オブジェクトとして生成
         GameObject newItem1 = Instantiate(Item1, inventory.transform);
+        TotalItemcouts++;
     }
 
     public void Spwan2()
     {
         GameObject newItem2 = Instantiate(Item2, inventory.transform);
+        TotalItemcouts++;
+
     }
 
     public void Spwan3()
     {
         GameObject newItem3 = Instantiate(Item3, inventory.transform);
+        TotalItemcouts++;
+
     }
 
     public void Spwan4()
     {
         GameObject newItem4 = Instantiate(Item4, inventory.transform);
+        TotalItemcouts++;
+
     }
 
     public void Spwan5()
     {
         GameObject newItem5 = Instantiate(Item5, inventory.transform);
+        TotalItemcouts++;
+        Debug.Log(TotalItemcouts);
+
     }
 
     public void Displayitem()
     {
-        GameObject newDisplayItem1 = Instantiate(DisplayItem1, Itemslot.transform);
+        GameManager.SetTotalItem(TotalItemcouts);
     }
 
 }

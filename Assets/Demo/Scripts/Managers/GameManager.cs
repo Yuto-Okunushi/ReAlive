@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
     public bool isBoosting1;        //コンボの待機をしているかどうか3コンボの時
     public bool isBoosting2;        //コンボの待機をしているかどうか５コンボの時
 
+    public int Totalitem;
+
     [HideInInspector]
     public string[] KatakanaArray =
     {
@@ -243,7 +245,10 @@ public class GameManager : MonoBehaviour
         return instance.KatakanaArray.Length;
     }
 
-    
+    static public int getItemTotal(int value)
+    {
+        return instance.Totalitem;
+    }
 
 
     //===SETTER==========================================================================================================
@@ -365,6 +370,9 @@ public class GameManager : MonoBehaviour
         instance.isBoosting2 = tf;
     }
 
-    
+    static public void SetTotalItem(int value)
+    {
+        instance.Totalitem = value;
+    }
 
 }
