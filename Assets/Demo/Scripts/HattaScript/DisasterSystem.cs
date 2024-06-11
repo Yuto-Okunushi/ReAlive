@@ -18,6 +18,7 @@ public class DisasterSystem : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject); // ゲームオブジェクトがシーン間で破棄されないようにする
+            UnityEngine.Debug.Log("DisasterSystem インスタンスが設定されました");
         }
         else
         {
@@ -59,7 +60,7 @@ public class DisasterSystem : MonoBehaviour
         yield return StartCoroutine(PanelUI.Instance.PrepAnim());
 
         // ランダムな時間待機 (3分から4分の間)
-        float randomTime = UnityEngine.Random.Range(5f, 10f); // 変更要必須
+        float randomTime = UnityEngine.Random.Range(10f, 24f); // 変更要必須
         yield return new WaitForSeconds(randomTime);
 
         // 災害発生をトリガー
@@ -74,6 +75,9 @@ public class DisasterSystem : MonoBehaviour
             disasterTrig = true;
             UnityEngine.Debug.Log("災害発生");
 
+            // プレイヤーの動きを停止
+            Player.Instance.enabled = false;
+
             // 災害効果をトリガー
             DisasterEffect.Instance.TriggerDisaster();
         }
@@ -86,6 +90,12 @@ public class DisasterSystem : MonoBehaviour
 
         // 災害発生エフェクトの持続時間待機
         yield return new WaitForSeconds(DisasterEffect.Instance.duration);
+
+        // 災害効果を停止
+        DisasterEffect.Instance.StopDisaster();
+
+        // プレイヤーの動きを再開
+        Player.Instance.enabled = true;
 
         // 準備フェーズの終了処理
         EndPrep();
