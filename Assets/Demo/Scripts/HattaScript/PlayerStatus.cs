@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerStatus : MonoBehaviour
@@ -21,6 +22,9 @@ public class PlayerStatus : MonoBehaviour
 
     private PostProcessVolume ppVolume; // ポストプロセスボリュームの参照
     private List<PostProcessEffectSettings> effects = new List<PostProcessEffectSettings>(); // 効果リスト
+
+    public UnityEngine.UI.Image hydrationGauge; // 水分ゲージのImage
+    public UnityEngine.UI.Image stressGauge;    // ストレスゲージのImage
 
     void Awake()
     {
@@ -60,6 +64,10 @@ public class PlayerStatus : MonoBehaviour
         {
             UnityEngine.Debug.LogWarning("Post Process VolumeまたはProfileが見つかりません。");
         }
+
+        // UIの初期化
+        UpdateHydrationGauge();
+        UpdateStressGauge();
     }
 
     void Update()
@@ -90,6 +98,7 @@ public class PlayerStatus : MonoBehaviour
         float rate = isRunning ? hydRatePerUnit * 2 : hydRatePerUnit; // 走っている場合は減少率を倍にする
         currHyd -= distance * rate; // 水分量を減少
         UnityEngine.Debug.Log("現在の水分量: " + currHyd);
+        UpdateHydrationGauge(); // 水分ゲージを更新
         if (currHyd <= 0)
         {
             // 水分が0になった場合の処理
@@ -110,6 +119,7 @@ public class PlayerStatus : MonoBehaviour
     {
         currStress -= distance * stressRatePerUnit; // ストレス量を減少
         UnityEngine.Debug.Log("現在のストレス量: " + currStress);
+        UpdateStressGauge(); // ストレスゲージを更新
         if (currStress <= 0)
         {
             // ストレスが0になった場合の処理
@@ -158,5 +168,17 @@ public class PlayerStatus : MonoBehaviour
                 UnityEngine.Debug.Log("ビネット効果適用: " + intensity);
             }
         }
+    }
+
+    // 水分ゲージを更新
+    void UpdateHydrationGauge()
+    {
+        hydrationGauge.fillAmount = currHyd / maxHydration;
+    }
+
+    // ストレスゲージを更新
+    void UpdateStressGauge()
+    {
+        stressGauge.fillAmount = currStress / maxStress;
     }
 }

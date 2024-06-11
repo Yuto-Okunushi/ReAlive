@@ -39,10 +39,8 @@ public class DisasterSystem : MonoBehaviour
         {
             // 準備フェーズの開始
             yield return StartCoroutine(Prep());
-
             // 災害発生フェーズ
             yield return StartCoroutine(Disaster());
-
             // 避難フェーズの開始
             yield return StartCoroutine(Evac());
         }
