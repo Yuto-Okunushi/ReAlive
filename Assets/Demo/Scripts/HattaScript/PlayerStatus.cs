@@ -138,21 +138,21 @@ public class PlayerStatus : MonoBehaviour
             if (effect is DepthOfField dof)
             {
                 // Depth of Field（ぼやけ効果）の適用
-                dof.focusDistance.value = Mathf.Lerp(10f, 5f, intensity);
-                dof.aperture.value = Mathf.Lerp(5.6f, 16f, intensity);
+                dof.focusDistance.value = Mathf.Lerp(10f, 2f, intensity); // より強いぼやけ効果
+                dof.aperture.value = Mathf.Lerp(5.6f, 22f, intensity); // より強いぼやけ効果
                 UnityEngine.Debug.Log("ぼやけ効果適用: " + intensity);
             }
             else if (effect is ColorGrading cg)
             {
                 // Color Grading（暗さ効果）の適用
-                cg.postExposure.value = Mathf.Lerp(0f, -5f, intensity);
-                cg.contrast.value = Mathf.Lerp(0f, 50f, intensity);
+                cg.postExposure.value = Mathf.Lerp(0f, -10f, intensity); // より強い暗さ
+                cg.contrast.value = Mathf.Lerp(0f, 100f, intensity); // より強いコントラスト
                 UnityEngine.Debug.Log("画面の暗さ適用: " + intensity);
             }
             else if (effect is Vignette vg)
             {
                 // Vignette（周囲暗さ効果）の適用
-                vg.intensity.value = Mathf.Lerp(0f, 0.5f, intensity);
+                vg.intensity.value = Mathf.Lerp(0f, 1f, intensity); // より強いビネット効果
                 vg.smoothness.value = Mathf.Lerp(0.2f, 0.5f, intensity);
                 UnityEngine.Debug.Log("ビネット効果適用: " + intensity);
             }

@@ -5,7 +5,6 @@ public class DisasterSystem : MonoBehaviour
 {
     public static DisasterSystem Instance { get; private set; } // シングルトンのインスタンス
 
-    public Animator disasterAnim; // 災害発生アニメーション
     public Vector3 startPoint; // スタート地点
     public Vector3 destPoint; // 目的地
 
@@ -60,7 +59,7 @@ public class DisasterSystem : MonoBehaviour
         yield return StartCoroutine(PanelUI.Instance.PrepAnim());
 
         // ランダムな時間待機 (3分から4分の間)
-        float randomTime = UnityEngine.Random.Range(10f, 24f); // 変更要必須
+        float randomTime = UnityEngine.Random.Range(5f, 10f); // 変更要必須
         yield return new WaitForSeconds(randomTime);
 
         // 災害発生をトリガー
@@ -74,8 +73,9 @@ public class DisasterSystem : MonoBehaviour
         {
             disasterTrig = true;
             UnityEngine.Debug.Log("災害発生");
-            // 災害発生アニメーションを開始
-            disasterAnim.SetTrigger("StartDisaster");
+
+            // 災害効果をトリガー
+            DisasterEffect.Instance.TriggerDisaster();
         }
     }
 
@@ -84,8 +84,8 @@ public class DisasterSystem : MonoBehaviour
     {
         UnityEngine.Debug.Log("災害フェーズ開始");
 
-        // 災害発生アニメーションの再生時間待機
-        yield return new WaitForSeconds(disasterAnim.GetCurrentAnimatorStateInfo(0).length);
+        // 災害発生エフェクトの持続時間待機
+        yield return new WaitForSeconds(DisasterEffect.Instance.duration);
 
         // 準備フェーズの終了処理
         EndPrep();
