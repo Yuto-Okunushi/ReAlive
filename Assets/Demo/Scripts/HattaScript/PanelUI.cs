@@ -4,41 +4,41 @@ using DG.Tweening;
 
 public class PanelUI : MonoBehaviour
 {
-    public static PanelUI Instance { get; private set; } // ƒVƒ“ƒOƒ‹ƒgƒ“‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+    public static PanelUI Instance { get; private set; } // ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 
-    public Transform prepPanel; // €”õƒtƒF[ƒY‚Ìƒpƒlƒ‹
-    public Transform evacPanel; // ”ğ“ïƒtƒF[ƒY‚Ìƒpƒlƒ‹
+    public Transform prepPanel; // æº–å‚™ãƒ•ã‚§ãƒ¼ã‚ºã®ãƒ‘ãƒãƒ«
+    public Transform evacPanel; // é¿é›£ãƒ•ã‚§ãƒ¼ã‚ºã®ãƒ‘ãƒãƒ«
 
     private void Awake()
     {
-        // ƒVƒ“ƒOƒ‹ƒgƒ“‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğİ’è
+        // ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¨­å®š
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ªƒV[ƒ“ŠÔ‚Å”jŠü‚³‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+            DontDestroyOnLoad(gameObject); // ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚·ãƒ¼ãƒ³é–“ã§ç ´æ£„ã•ã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
         }
         else
         {
-            Destroy(gameObject); // Šù‚ÉƒCƒ“ƒXƒ^ƒ“ƒX‚ª‘¶İ‚·‚éê‡‚Í”jŠü
+            Destroy(gameObject); // æ—¢ã«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ç ´æ£„
         }
 
-        // DOTween‚Ì‰Šú‰»
+        // DOTweenã®åˆæœŸåŒ–
         DOTween.Init();
     }
 
     private void Start()
     {
-        // ƒpƒlƒ‹‚Ì‰Šú‰ñ“]Šp“x‚ğİ’è
+        // ãƒ‘ãƒãƒ«ã®åˆæœŸå›è»¢è§’åº¦ã‚’è¨­å®š
         if (prepPanel != null)
         {
             prepPanel.rotation = Quaternion.Euler(90, 0, 0);
-            prepPanel.gameObject.SetActive(false); // ‰Šúó‘Ô‚Å‚Íƒpƒlƒ‹‚ğ”ñ•\¦‚É‚·‚é
+            prepPanel.gameObject.SetActive(false); // åˆæœŸçŠ¶æ…‹ã§ã¯ãƒ‘ãƒãƒ«ã‚’éè¡¨ç¤ºã«ã™ã‚‹
         }
 
         if (evacPanel != null)
         {
             evacPanel.rotation = Quaternion.Euler(90, 0, 0);
-            evacPanel.gameObject.SetActive(false); // ‰Šúó‘Ô‚Å‚Íƒpƒlƒ‹‚ğ”ñ•\¦‚É‚·‚é
+            evacPanel.gameObject.SetActive(false); // åˆæœŸçŠ¶æ…‹ã§ã¯ãƒ‘ãƒãƒ«ã‚’éè¡¨ç¤ºã«ã™ã‚‹
         }
     }
 
@@ -46,22 +46,22 @@ public class PanelUI : MonoBehaviour
     {
         if (prepPanel == null) yield break;
 
-        // ƒpƒlƒ‹‚ğ•\¦
+        // ãƒ‘ãƒãƒ«ã‚’è¡¨ç¤º
         prepPanel.gameObject.SetActive(true);
 
-        // 0.5•b‘Ò‹@
+        // 0.5ç§’å¾…æ©Ÿ
         yield return new WaitForSeconds(0.5f);
 
-        // ƒpƒlƒ‹‚ğ0.7•b‚©‚¯‚Ä‰ñ“]‚³‚¹‚éi90“x‚©‚ç0“x‚Öj
+        // ãƒ‘ãƒãƒ«ã‚’0.7ç§’ã‹ã‘ã¦å›è»¢ã•ã›ã‚‹ï¼ˆ90åº¦ã‹ã‚‰0åº¦ã¸ï¼‰
         yield return prepPanel.DORotate(new Vector3(0, 0, 0), 0.7f).WaitForCompletion();
 
-        // 1•b‘Ò‹@
+        // 1ç§’å¾…æ©Ÿ
         yield return new WaitForSeconds(1f);
 
-        // ƒpƒlƒ‹‚ğ0.7•b‚©‚¯‚Ä‰ñ“]‚³‚¹‚éi0“x‚©‚ç90“x‚Ö–ß‚·j
+        // ãƒ‘ãƒãƒ«ã‚’0.7ç§’ã‹ã‘ã¦å›è»¢ã•ã›ã‚‹ï¼ˆ0åº¦ã‹ã‚‰90åº¦ã¸æˆ»ã™ï¼‰
         yield return prepPanel.DORotate(new Vector3(90, 0, 0), 0.7f).WaitForCompletion();
 
-        // ƒpƒlƒ‹‚ğ”ñ•\¦‚É‚·‚é
+        // ãƒ‘ãƒãƒ«ã‚’éè¡¨ç¤ºã«ã™ã‚‹
         prepPanel.gameObject.SetActive(false);
     }
 
@@ -69,22 +69,22 @@ public class PanelUI : MonoBehaviour
     {
         if (evacPanel == null) yield break;
 
-        // ƒpƒlƒ‹‚ğ•\¦
+        // ãƒ‘ãƒãƒ«ã‚’è¡¨ç¤º
         evacPanel.gameObject.SetActive(true);
 
-        // 0.5•b‘Ò‹@
+        // 0.5ç§’å¾…æ©Ÿ
         yield return new WaitForSeconds(0.5f);
 
-        // ƒpƒlƒ‹‚ğ0.7•b‚©‚¯‚Ä‰ñ“]‚³‚¹‚éi90“x‚©‚ç0“x‚Öj
+        // ãƒ‘ãƒãƒ«ã‚’0.7ç§’ã‹ã‘ã¦å›è»¢ã•ã›ã‚‹ï¼ˆ90åº¦ã‹ã‚‰0åº¦ã¸ï¼‰
         yield return evacPanel.DORotate(new Vector3(0, 0, 0), 0.7f).WaitForCompletion();
 
-        // 1•b‘Ò‹@
+        // 1ç§’å¾…æ©Ÿ
         yield return new WaitForSeconds(1f);
 
-        // ƒpƒlƒ‹‚ğ0.7•b‚©‚¯‚Ä‰ñ“]‚³‚¹‚éi0“x‚©‚ç90“x‚Ö–ß‚·j
+        // ãƒ‘ãƒãƒ«ã‚’0.7ç§’ã‹ã‘ã¦å›è»¢ã•ã›ã‚‹ï¼ˆ0åº¦ã‹ã‚‰90åº¦ã¸æˆ»ã™ï¼‰
         yield return evacPanel.DORotate(new Vector3(90, 0, 0), 0.7f).WaitForCompletion();
 
-        // ƒpƒlƒ‹‚ğ”ñ•\¦‚É‚·‚é
+        // ãƒ‘ãƒãƒ«ã‚’éè¡¨ç¤ºã«ã™ã‚‹
         evacPanel.gameObject.SetActive(false);
     }
 }

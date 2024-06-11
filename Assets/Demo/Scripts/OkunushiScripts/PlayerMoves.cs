@@ -8,6 +8,9 @@ public class PlayerMoves : MonoBehaviour
     [SerializeField] Canvas shopcanvs;
     [SerializeField] GameObject shopobject;
     [SerializeField] GameObject inventory;
+    [SerializeField] Timer timer;
+    [SerializeField] Moisturegauge moisturegauge;
+    [SerializeField] Foodgauge foodgauge;
 
     public float moveSpeed = 5f;
     public float turnSpeed = 10f;
@@ -32,7 +35,11 @@ public class PlayerMoves : MonoBehaviour
         {
             Move();
             Turn();
+            timer.TimerStartStop();
+            moisturegauge.MoisturegaugeStartStop();
+            foodgauge.FoodgaugeStartStop();
         }
+        
     }
 
     void Move()
