@@ -52,6 +52,7 @@ public class PlayerStatus : MonoBehaviour
             foreach (var setting in ppVolume.profile.settings)
             {
                 effects.Add(setting);
+                UnityEngine.Debug.Log("ポストプロセス効果: " + setting.GetType().Name);
             }
             UnityEngine.Debug.Log("PostProcess設定を取得しました。");
         }
