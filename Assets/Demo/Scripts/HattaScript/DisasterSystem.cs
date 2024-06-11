@@ -3,111 +3,111 @@ using UnityEngine;
 
 public class DisasterSystem : MonoBehaviour
 {
-    public static DisasterSystem Instance { get; private set; } // ƒVƒ“ƒOƒ‹ƒgƒ“‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+    public static DisasterSystem Instance { get; private set; } // ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 
-    public Animator disasterAnim; // ĞŠQ”­¶ƒAƒjƒ[ƒVƒ‡ƒ“
-    public Vector3 startPoint; // ƒXƒ^[ƒg’n“_
-    public Vector3 destPoint; // –Ú“I’n
+    public Animator disasterAnim; // ç½å®³ç™ºç”Ÿã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
+    public Vector3 startPoint; // ã‚¹ã‚¿ãƒ¼ãƒˆåœ°ç‚¹
+    public Vector3 destPoint; // ç›®çš„åœ°
 
     private bool disasterTrig = false;
-    private float evacTimer = 180f; // 3•ª(180•b)‚Ìƒ^ƒCƒ}[
+    private float evacTimer = 180f; // 3åˆ†(180ç§’)ã®ã‚¿ã‚¤ãƒãƒ¼
 
     private void Awake()
     {
-        // ƒVƒ“ƒOƒ‹ƒgƒ“‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğİ’è
+        // ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¨­å®š
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ªƒV[ƒ“ŠÔ‚Å”jŠü‚³‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+            DontDestroyOnLoad(gameObject); // ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚·ãƒ¼ãƒ³é–“ã§ç ´æ£„ã•ã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
         }
         else
         {
-            Destroy(gameObject); // Šù‚ÉƒCƒ“ƒXƒ^ƒ“ƒX‚ª‘¶İ‚·‚éê‡‚Í”jŠü
+            Destroy(gameObject); // æ—¢ã«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ç ´æ£„
         }
     }
 
     void Start()
     {
-        // ƒQ[ƒ€ƒ‹[ƒv‚ÌƒRƒ‹[ƒ`ƒ“‚ğŠJn
+        // ã‚²ãƒ¼ãƒ ãƒ«ãƒ¼ãƒ—ã®ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’é–‹å§‹
         StartCoroutine(GameLoop());
     }
 
-    // ƒQ[ƒ€ƒ‹[ƒv‚ÌŠÇ—
+    // ã‚²ãƒ¼ãƒ ãƒ«ãƒ¼ãƒ—ã®ç®¡ç†
     IEnumerator GameLoop()
     {
         while (true)
         {
-            // €”õƒtƒF[ƒY‚ÌŠJn
+            // æº–å‚™ãƒ•ã‚§ãƒ¼ã‚ºã®é–‹å§‹
             yield return StartCoroutine(Prep());
 
-            // ĞŠQ”­¶ƒtƒF[ƒY
+            // ç½å®³ç™ºç”Ÿãƒ•ã‚§ãƒ¼ã‚º
             yield return StartCoroutine(Disaster());
 
-            // ”ğ“ïƒtƒF[ƒY‚ÌŠJn
+            // é¿é›£ãƒ•ã‚§ãƒ¼ã‚ºã®é–‹å§‹
             yield return StartCoroutine(Evac());
         }
     }
 
-    // €”õƒtƒF[ƒY‚Ìˆ—
+    // æº–å‚™ãƒ•ã‚§ãƒ¼ã‚ºã®å‡¦ç†
     IEnumerator Prep()
     {
-        UnityEngine.Debug.Log("€”õƒtƒF[ƒYŠJn");
+        UnityEngine.Debug.Log("æº–å‚™ãƒ•ã‚§ãƒ¼ã‚ºé–‹å§‹");
 
-        // ĞŠQƒtƒ‰ƒO‚ÌƒŠƒZƒbƒg
+        // ç½å®³ãƒ•ãƒ©ã‚°ã®ãƒªã‚»ãƒƒãƒˆ
         disasterTrig = false;
 
-        // €”õƒtƒF[ƒY‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚ğŠJn
+        // æº–å‚™ãƒ•ã‚§ãƒ¼ã‚ºã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’é–‹å§‹
         yield return StartCoroutine(PanelUI.Instance.PrepAnim());
 
-        // ƒ‰ƒ“ƒ_ƒ€‚ÈŠÔ‘Ò‹@ (10•b‚©‚ç24•b‚ÌŠÔ)
-        float randomTime = UnityEngine.Random.Range(10f, 24f); // •ÏX—v•K{
+        // ãƒ©ãƒ³ãƒ€ãƒ ãªæ™‚é–“å¾…æ©Ÿ (3åˆ†ã‹ã‚‰4åˆ†ã®é–“)
+        float randomTime = UnityEngine.Random.Range(10f, 24f); // å¤‰æ›´è¦å¿…é ˆ
         yield return new WaitForSeconds(randomTime);
 
-        // ĞŠQ”­¶‚ğƒgƒŠƒK[
+        // ç½å®³ç™ºç”Ÿã‚’ãƒˆãƒªã‚¬ãƒ¼
         TriggerDisaster();
     }
 
-    // ĞŠQ”­¶‚ğƒgƒŠƒK[
+    // ç½å®³ç™ºç”Ÿã‚’ãƒˆãƒªã‚¬ãƒ¼
     void TriggerDisaster()
     {
         if (!disasterTrig)
         {
             disasterTrig = true;
-            UnityEngine.Debug.Log("ĞŠQ”­¶");
-            // ĞŠQ”­¶ƒAƒjƒ[ƒVƒ‡ƒ“‚ğŠJn
+            UnityEngine.Debug.Log("ç½å®³ç™ºç”Ÿ");
+            // ç½å®³ç™ºç”Ÿã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’é–‹å§‹
             disasterAnim.SetTrigger("StartDisaster");
         }
     }
 
-    // ĞŠQ”­¶ƒtƒF[ƒY‚Ìˆ—
+    // ç½å®³ç™ºç”Ÿãƒ•ã‚§ãƒ¼ã‚ºã®å‡¦ç†
     IEnumerator Disaster()
     {
-        UnityEngine.Debug.Log("ĞŠQƒtƒF[ƒYŠJn");
+        UnityEngine.Debug.Log("ç½å®³ãƒ•ã‚§ãƒ¼ã‚ºé–‹å§‹");
 
-        // ĞŠQ”­¶ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌÄ¶ŠÔ‘Ò‹@
+        // ç½å®³ç™ºç”Ÿã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®å†ç”Ÿæ™‚é–“å¾…æ©Ÿ
         yield return new WaitForSeconds(disasterAnim.GetCurrentAnimatorStateInfo(0).length);
 
-        // €”õƒtƒF[ƒY‚ÌI—¹ˆ—
+        // æº–å‚™ãƒ•ã‚§ãƒ¼ã‚ºã®çµ‚äº†å‡¦ç†
         EndPrep();
     }
 
-    // €”õƒtƒF[ƒY‚ÌI—¹ˆ—
+    // æº–å‚™ãƒ•ã‚§ãƒ¼ã‚ºã®çµ‚äº†å‡¦ç†
     void EndPrep()
     {
-        UnityEngine.Debug.Log("€”õƒtƒF[ƒYI—¹");
-        // €”õƒtƒF[ƒY‚ğ–³Œø‰»
+        UnityEngine.Debug.Log("æº–å‚™ãƒ•ã‚§ãƒ¼ã‚ºçµ‚äº†");
+        // æº–å‚™ãƒ•ã‚§ãƒ¼ã‚ºã‚’ç„¡åŠ¹åŒ–
         if (PanelUI.Instance.prepPanel != null)
         {
             PanelUI.Instance.prepPanel.gameObject.SetActive(false);
         }
     }
 
-    // ”ğ“ïƒtƒF[ƒY‚Ìˆ—
+    // é¿é›£ãƒ•ã‚§ãƒ¼ã‚ºã®å‡¦ç†
     IEnumerator Evac()
     {
-        UnityEngine.Debug.Log("”ğ“ïƒtƒF[ƒYŠJn");
+        UnityEngine.Debug.Log("é¿é›£ãƒ•ã‚§ãƒ¼ã‚ºé–‹å§‹");
 
-        // ”ğ“ïƒtƒF[ƒY‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚ğŠJn
+        // é¿é›£ãƒ•ã‚§ãƒ¼ã‚ºã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’é–‹å§‹
         yield return StartCoroutine(PanelUI.Instance.EvacAnim());
 
         float timer = evacTimer;
@@ -116,38 +116,38 @@ public class DisasterSystem : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            // ƒvƒŒƒCƒ„[‚ª–Ú“I’n‚É“’B‚µ‚½‚©ƒ`ƒFƒbƒN
+            // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç›®çš„åœ°ã«åˆ°é”ã—ãŸã‹ãƒã‚§ãƒƒã‚¯
             if (Vector3.Distance(Player.Instance.transform.position, destPoint) < 1f)
             {
                 ReachDest();
-                yield break; // ƒRƒ‹[ƒ`ƒ“‚ğI—¹
+                yield break; // ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’çµ‚äº†
             }
 
             yield return null;
         }
 
-        // ƒ^ƒCƒ}[‚ªØ‚ê‚½ê‡
+        // ã‚¿ã‚¤ãƒãƒ¼ãŒåˆ‡ã‚ŒãŸå ´åˆ
         EndEvac();
     }
 
-    // ”ğ“ïƒtƒF[ƒY‚ÌI—¹ˆ—iƒ^ƒCƒ€ƒAƒEƒgj
+    // é¿é›£ãƒ•ã‚§ãƒ¼ã‚ºã®çµ‚äº†å‡¦ç†ï¼ˆã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆï¼‰
     void EndEvac()
     {
-        UnityEngine.Debug.Log("”ğ“ïƒtƒF[ƒYI—¹ - ƒ^ƒCƒ€ƒAƒEƒg");
+        UnityEngine.Debug.Log("é¿é›£ãƒ•ã‚§ãƒ¼ã‚ºçµ‚äº† - ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ");
 
-        // ƒvƒŒƒCƒ„[ƒIƒuƒWƒFƒNƒg‚ğÁ‚·
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆã™
         if (Player.Instance != null)
         {
             Destroy(Player.Instance.gameObject);
         }
     }
 
-    // ƒvƒŒƒCƒ„[‚ª–Ú“I’n‚É“’B‚µ‚½‚Ìˆ—
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç›®çš„åœ°ã«åˆ°é”ã—ãŸæ™‚ã®å‡¦ç†
     void ReachDest()
     {
-        UnityEngine.Debug.Log("ƒvƒŒƒCƒ„[‚ª–Ú“I’n‚É“’B");
+        UnityEngine.Debug.Log("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç›®çš„åœ°ã«åˆ°é”");
 
-        // ƒvƒŒƒCƒ„[‚ğƒXƒ^[ƒg’n“_‚É–ß‚·
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’ã‚¹ã‚¿ãƒ¼ãƒˆåœ°ç‚¹ã«æˆ»ã™
         Player.Instance.transform.position = startPoint;
     }
 }
