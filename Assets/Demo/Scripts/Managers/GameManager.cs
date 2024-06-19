@@ -52,6 +52,9 @@ public class GameManager : MonoBehaviour
 
     public int Totalitem;
 
+    public string ItemName;         //アイテムの名前を表示させる
+    public string ItemDetailsName;      //アイテムの詳細を表示させる
+
     [HideInInspector]
     public string[] KatakanaArray =
     {
@@ -250,6 +253,16 @@ public class GameManager : MonoBehaviour
         return instance.Totalitem;
     }
 
+    static public string getItemName()
+    {
+        return instance.ItemName;
+    }
+
+    static public string getItemDetailsName()
+    {
+        return instance.ItemDetailsName;
+    }
+
 
     //===SETTER==========================================================================================================
     static public float SetVolumeBGM(float value)
@@ -373,6 +386,16 @@ public class GameManager : MonoBehaviour
     static public void SetTotalItem(int value)
     {
         instance.Totalitem = value;
+    }
+
+    static public void SetItemName(string value)
+    {
+        instance.ItemName = value;
+    }
+
+    static public void SetItemDetailsName(string value)
+    {
+        instance.ItemDetailsName = value;
     }
 
 }
