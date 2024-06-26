@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class GameManager : MonoBehaviour
 {
@@ -17,27 +20,7 @@ public class GameManager : MonoBehaviour
     public float durationCrossBGM;  //BGMをクロスフェードさせるときの間の時間
     //=============================================================================
 
-    //==タイムアタック関係=========================================================
-    public int[] taTotalScore = new int[4];     //Perfect Great Goodの空箱作成
-    public float taSumScore;                      //スコアの合計値の変数
-    //=============================================================================
-
-
-    //=トレーニングシステム関係====================================================
-    public float trSecondSumTime;   //プレイ時間(秒)
-    public int trMinuteSumTime;   //プレイ時間(分)
-    public int trHourSumTIme;   //プレイ時間(時間)
-    public float trAverage;         //平均値
-    public int trCount;             //回答数
-    public int trPlayCount;         //プレイ回数
-
     
-
-    //=============================================================================
-
-    //=タイムアタックトレーニング共通==============================================
-    public int sumCombo;
-    //=============================================================================
 
     public string nowScene;     //現在どのシーンにいるか
 
@@ -54,30 +37,9 @@ public class GameManager : MonoBehaviour
 
     public string ItemName;         //アイテムの名前を表示させる
     public string ItemDetailsName;      //アイテムの詳細を表示させる
+    public Sprite ItemImage;
 
-    [HideInInspector]
-    public string[] KatakanaArray =
-    {
-        "ア", "イ", "ウ", "エ", "オ",
-        "カ", "キ", "ク", "ケ", "コ",
-        "サ", "シ", "ス", "セ", "ソ",
-        "タ", "チ", "ツ", "テ", "ト",
-        "ナ", "ニ", "ヌ", "ネ", "ノ",
-        "ハ", "ヒ", "フ", "ヘ", "ホ",
-        "マ", "ミ", "ム", "メ", "モ",
-        "ヤ", "ユ", "ヨ",
-        "ラ", "リ", "ル", "レ", "ロ",
-        "ワ", "ヰ", "ヱ", "ヲ",
-        "ン", "ー",
-        "ガ", "ギ", "グ", "ゲ", "ゴ",
-        "ザ", "ジ", "ズ", "ゼ", "ゾ",
-        "ダ", "ヂ", "ヅ", "デ", "ド",
-        "バ", "ビ", "ブ", "ベ", "ボ",
-        "ヴ",
-        "パ", "ピ", "プ", "ペ", "ポ",
-        "ァ", "ィ", "ゥ", "ェ", "ォ",
-        "ャ", "ュ", "ョ", "ヮ", "ッ"
-    };  //カタカナ配列
+    
 
     private void Awake()
     {
@@ -146,61 +108,7 @@ public class GameManager : MonoBehaviour
         return instance.durationCrossBGM;
     }
 
-    static public int GetTaTotalScore(int n)
-    {
-        //error回避
-        if (n >= 0 && n < instance.taTotalScore.Length)
-        {
-            return instance.taTotalScore[n];
-        }
-
-        //予想される配列のlengthより大きい数を参照しようとしたら
-        else
-        {
-            return -1;
-            //のちのー１以下の処理を書く
-        }
-    }
-
-    static public float GetTaSumScore()
-    {
-        return instance.taSumScore;
-    }
-
-    static public float GetTrSecendSumTime()
-    {
-        return instance.trSecondSumTime;
-    }
-
-    static public int GetTrMinuteSumTime()
-    {
-        return instance.trMinuteSumTime;
-    }
-
-    static public int GetTrHourSumTime()
-    {
-        return instance.trHourSumTIme;
-    }
-
-    static public float GetTrAnswerAverage()
-    {
-        return instance.trAverage;
-    }
-
-    static public int GetTrAnswerCount()
-    {
-        return instance.trCount;
-    }
-
-    static public int GetTrPlayCount()
-    {
-        return instance.trPlayCount;
-    }
-
-    static public int GetTaTlCombo()
-    {
-        return instance.sumCombo;
-    }
+    
 
     static public string GetNowScene()
     {
@@ -227,27 +135,6 @@ public class GameManager : MonoBehaviour
         return instance.isBoosting2;
     }
 
-
-    static public string getKatakanaArray(int n)
-    {
-        //error回避
-        if (n >= 0 && n < instance.KatakanaArray.Length)
-        {
-            return instance.KatakanaArray[n];
-        }
-
-        //予想される配列のlengthより大きい数を参照しようとしたら
-        else
-        {
-            return null;
-        }
-    }
-
-    static public int getKatakanaArrayLength()
-    {
-        return instance.KatakanaArray.Length;
-    }
-
     static public int getItemTotal(int value)
     {
         return instance.Totalitem;
@@ -261,6 +148,11 @@ public class GameManager : MonoBehaviour
     static public string getItemDetailsName()
     {
         return instance.ItemDetailsName;
+    }
+
+    static public Sprite getItemImage()
+    {
+        return instance.ItemImage;
     }
 
 
@@ -306,57 +198,7 @@ public class GameManager : MonoBehaviour
         instance.durationCrossBGM = value;
     }
 
-    static public void SetTaTotalScore(int n, int value)
-    {
-        if(n >= 0 && n < instance.taTotalScore.Length)
-        {
-            instance.taTotalScore[n] = value;       //n番目の箱にvalueを代入している
-        }
-        else
-        {
-            return;             //例外処理
-        }
-    }
-
-    static public void SetTaTlsumCombo(int value)
-    {
-        instance.sumCombo = value;
-    }
-
-    static public void SetTaSumScore(float value)
-    {
-        instance.taSumScore = value;
-    }
-
-    static public void SetTrSecondSumTime(float value)
-    {
-        instance.trSecondSumTime = value;
-    }
-
-    static public void SetTrMinuteSumTime(int value)
-    {
-        instance.trMinuteSumTime = value;
-    }
-
-    static public void SetTrHourSumTIme(int value)
-    {
-        instance.trHourSumTIme = value;
-    }
     
-    static public void SetAnswerAverage(float value)
-    {
-        instance.trAverage = value;
-    }
-
-    static public void SetAnswerCount(int value)
-    {
-        instance.trCount = value;
-    }
-
-    static public void SetPlayCount(int value)
-    {
-        instance.trPlayCount = value;
-    }
 
     static public void SetNowScene(string name)
     {
@@ -396,6 +238,11 @@ public class GameManager : MonoBehaviour
     static public void SetItemDetailsName(string value)
     {
         instance.ItemDetailsName = value;
+    }
+
+    static public void SetItemImage(Sprite value)
+    {
+        instance.ItemImage= value;
     }
 
 }

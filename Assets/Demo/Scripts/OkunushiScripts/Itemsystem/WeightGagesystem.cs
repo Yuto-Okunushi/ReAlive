@@ -28,7 +28,7 @@ public class WeightGagesystem : MonoBehaviour
     private void ItemCountsCheck()
     {
         // Get total item count from GameManager and assign it to totalItem
-        totalItem = GameManager.getItemTotal(totalItem);
+        
 
         // Update weightslider value
         weightslider.value = totalItem;
