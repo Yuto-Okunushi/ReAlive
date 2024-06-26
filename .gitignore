@@ -22,6 +22,9 @@
 /Assets/Quirky\ Series\ Ultimate
 /Assets/Quirky\ Series\ Ultimate.meta
 
+/Assets/Demo/Map/
+/Assets/Demo/Map.meta
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/

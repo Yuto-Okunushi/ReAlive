@@ -5,7 +5,7 @@ public class DisasterEffect : MonoBehaviour
 {
     public static DisasterEffect Instance { get; private set; } // シングルトンのインスタンス
 
-    public float duration = 20.0f; // 災害の持続時間を延長
+    public float duration = 30.0f; // 災害の持続時間を延長
     public float initialMagnitude = 1.0f; // 初期の揺れの大きさ
     public float finalMagnitude = 0.1f; // 最終的な揺れの大きさ
 
