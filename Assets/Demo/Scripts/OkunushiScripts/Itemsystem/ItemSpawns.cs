@@ -15,65 +15,86 @@ public class ItemSpawns : MonoBehaviour
     [SerializeField] GameObject inventory;
     //---------------------------------------------------
 
+    //--買う買わないを表示させるパネル-------------------
+    [SerializeField] GameObject Openpanel;
+    //---------------------------------------------------
+
     //--インベントリでアイテムスロットに物を表示させるアイテムと親オブジェクト------
-    [SerializeField] GameObject DisplayItem1;
+    //[SerializeField] GameObject DisplayItem1;
     //[SerializeField] GameObject Itemslot;
     //---------------------------------------------------------------
 
-    private int TotalItemcouts = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-
-    }
+    private int TotalItemcouts = 1;
 
     // Update is called once per frame
-    void Update()
+    
+    public void PaneOpen()
     {
-        Displayitem();
+        Openpanel.SetActive(true);
+    }
+
+    public void ClosePanel()
+    {
+        Openpanel.SetActive(false);
     }
 
     public void Spawn1()
     {
-        // Item1をinventoryの子オブジェクトとして生成
-        GameObject newItem1 = Instantiate(Item1, inventory.transform);
-        TotalItemcouts++;
+        if(TotalItemcouts <= 5)
+        {
+            GameObject newItem1 = Instantiate(Item1, inventory.transform);
+            TotalItemcouts++;
+            GameManager.SetTotalItem(TotalItemcouts);
+        }
+        
     }
 
     public void Spwan2()
     {
-        GameObject newItem2 = Instantiate(Item2, inventory.transform);
-        TotalItemcouts++;
+        if (TotalItemcouts <= 5)
+        {
+            GameObject newItem2 = Instantiate(Item2, inventory.transform);
+            TotalItemcouts++;
+            GameManager.SetTotalItem(TotalItemcouts);
+        }
+        
 
     }
 
     public void Spwan3()
     {
-        GameObject newItem3 = Instantiate(Item3, inventory.transform);
-        TotalItemcouts++;
+        if (TotalItemcouts <= 5)
+        {
+            GameObject newItem3 = Instantiate(Item3, inventory.transform);
+            TotalItemcouts++;
+            GameManager.SetTotalItem(TotalItemcouts);
+        }
+        
 
     }
 
     public void Spwan4()
     {
-        GameObject newItem4 = Instantiate(Item4, inventory.transform);
-        TotalItemcouts++;
+        if (TotalItemcouts <= 5)
+        {
+            GameObject newItem4 = Instantiate(Item4, inventory.transform);
+            TotalItemcouts++;
+            GameManager.SetTotalItem(TotalItemcouts);
+
+        }
 
     }
 
     public void Spwan5()
     {
-        GameObject newItem5 = Instantiate(Item5, inventory.transform);
-        TotalItemcouts++;
-        Debug.Log(TotalItemcouts);
+        if (TotalItemcouts <= 5)
+        {
+            GameObject newItem5 = Instantiate(Item5, inventory.transform);
+            TotalItemcouts++;
+            GameManager.SetTotalItem(TotalItemcouts);
+        }
+        
 
-    }
-
-    public void Displayitem()
-    {
-        GameManager.SetTotalItem(TotalItemcouts);
     }
 
 }

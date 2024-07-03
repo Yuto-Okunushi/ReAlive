@@ -12,6 +12,7 @@ public class PlayerMoves : MonoBehaviour
     [SerializeField] Moisturegauge moisturegauge;
     [SerializeField] Foodgauge foodgauge;
 
+    public int playerinitialmony = 3000;        //プレイヤーの最初に所持している金額
     public float moveSpeed = 5f;
     public float turnSpeed = 10f;
 
@@ -29,6 +30,8 @@ public class PlayerMoves : MonoBehaviour
     void Update()
     {
         ObjectOpen();
+
+        GameManager.SetPlayerMony(playerinitialmony);
 
         // shopcanvsがアクティブでない場合にのみ移動と回転を許可
         if (!shopcanvs.gameObject.activeSelf && !inventory.gameObject.activeSelf)

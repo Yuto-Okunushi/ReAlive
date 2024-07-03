@@ -5,32 +5,30 @@ using UnityEngine.UI;
 
 public class WeightGagesystem : MonoBehaviour
 {
-    private int totalItem;
-    [SerializeField] Slider weightslider;
+    [SerializeField] Slider weightSlider;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Ensure the weightslider reference is set
-        if (weightslider == null)
+        if (weightSlider == null)
         {
             Debug.LogError("Slider reference is not set in WeightGagesystem script!");
             return;
         }
+
+        // Initialize the slider value
+        UpdateSlider();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ItemCountsCheck();
+        UpdateSlider();
     }
 
-    private void ItemCountsCheck()
+    private void UpdateSlider()
     {
-        // Get total item count from GameManager and assign it to totalItem
-        
-
-        // Update weightslider value
-        weightslider.value = totalItem;
+        int totalItem = GameManager.GetItemTotal();
+        weightSlider.value = totalItem;
     }
 }

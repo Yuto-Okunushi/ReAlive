@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     public string ItemDetailsName;      //アイテムの詳細を表示させる
     public Sprite ItemImage;
 
+    public int Playerhavemony;
+
     
 
     private void Awake()
@@ -135,7 +137,7 @@ public class GameManager : MonoBehaviour
         return instance.isBoosting2;
     }
 
-    static public int getItemTotal(int value)
+    static public int GetItemTotal()
     {
         return instance.Totalitem;
     }
@@ -153,6 +155,11 @@ public class GameManager : MonoBehaviour
     static public Sprite getItemImage()
     {
         return instance.ItemImage;
+    }
+
+    static public int GetPlayerMony()
+    {
+        return instance.Playerhavemony;
     }
 
 
@@ -245,4 +252,8 @@ public class GameManager : MonoBehaviour
         instance.ItemImage= value;
     }
 
+    static public void SetPlayerMony(int value)
+    {
+        instance.Playerhavemony = value;
+    }
 }
