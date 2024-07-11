@@ -18,3 +18,4 @@ MonoBehaviour:
   hydration: 0
   food: 0
   itemImage: {fileID: 0}
+  ItemSpawn: {fileID: 5057012949598824036, guid: 88b124529f8511245a4d9e9661a38521, type: 3}

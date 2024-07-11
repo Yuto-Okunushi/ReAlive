@@ -536,7 +536,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30A2\u30A4\u30C6\u30E0\u540D\u3092\u8CB7\u3044\u307E\u3059\u304B\uFF1F\n\u3000\u3000\u3000\u91D1\u984D\uFF1F\uFF1F\uFF1F\u5186"
+  m_Text: 
 --- !u!222 &56612135
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1821,8 +1821,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f93ba871f86ce49b1343fd73cd3607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShopTextArticle: {fileID: 56612134}
-  ItemData: {fileID: 11400000, guid: 7da56205898ab404ba6498152a6f31ec, type: 2}
 --- !u!1 &685343454
 GameObject:
   m_ObjectHideFlags: 0
@@ -4654,7 +4652,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2101727987}
         m_TargetAssemblyTypeName: ItemSpawns, Assembly-CSharp
-        m_MethodName: Spawn1
+        m_MethodName: SpawnSelectedItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6387,13 +6385,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba43b526dd4ff0040b6ccbe501b838ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item1: {fileID: 4700508576631666468, guid: d961b25bdf72d884185188a47e449701, type: 3}
-  Item2: {fileID: 3414186878145303848, guid: 1962c494ddfb0a14091aa37e46cc5e07, type: 3}
-  Item3: {fileID: 5057012949598824036, guid: 88b124529f8511245a4d9e9661a38521, type: 3}
-  Item4: {fileID: 8224676127747972023, guid: 2e2d3e92c4d98614a9117b6fe39d4449, type: 3}
-  Item5: {fileID: 6986679705138425406, guid: daf29a4257364da40a0cf632909c6c54, type: 3}
+  items:
+  - {fileID: 4700508576631666468, guid: d961b25bdf72d884185188a47e449701, type: 3}
+  - {fileID: 3414186878145303848, guid: 1962c494ddfb0a14091aa37e46cc5e07, type: 3}
+  - {fileID: 5057012949598824036, guid: 88b124529f8511245a4d9e9661a38521, type: 3}
+  - {fileID: 8224676127747972023, guid: 2e2d3e92c4d98614a9117b6fe39d4449, type: 3}
+  - {fileID: 6986679705138425406, guid: daf29a4257364da40a0cf632909c6c54, type: 3}
   inventory: {fileID: 230953878}
   Openpanel: {fileID: 644911724}
+  ItemText: {fileID: 56612134}
+  itemData:
+  - {fileID: 11400000, guid: 7da56205898ab404ba6498152a6f31ec, type: 2}
+  - {fileID: 11400000, guid: 927e4b3adb6bf944fb87218f48f7a4d4, type: 2}
+  - {fileID: 11400000, guid: 5ea3547c43579a74a87675ecb707ed3e, type: 2}
+  - {fileID: 11400000, guid: 002ed4ceb32c93f4b8b89964f575e566, type: 2}
+  - {fileID: 11400000, guid: 102240dca199d084bb505252ff514b31, type: 2}
 --- !u!1 &2132488183
 GameObject:
   m_ObjectHideFlags: 0
@@ -6647,12 +6653,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2101727987}
         m_TargetAssemblyTypeName: ItemSpawns, Assembly-CSharp
-        m_MethodName: PaneOpen
-        m_Mode: 1
+        m_MethodName: PaneOpenSpwam
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7017,12 +7023,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2101727987}
         m_TargetAssemblyTypeName: ItemSpawns, Assembly-CSharp
-        m_MethodName: PaneOpen
-        m_Mode: 1
+        m_MethodName: PaneOpenSpwam
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7116,8 +7122,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2101727987}
         m_TargetAssemblyTypeName: ItemSpawns, Assembly-CSharp
-        m_MethodName: PaneOpen
-        m_Mode: 1
+        m_MethodName: PaneOpenSpwam
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7365,12 +7371,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2101727987}
         m_TargetAssemblyTypeName: ItemSpawns, Assembly-CSharp
-        m_MethodName: PaneOpen
-        m_Mode: 1
+        m_MethodName: PaneOpenSpwam
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7491,12 +7497,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2101727987}
         m_TargetAssemblyTypeName: ItemSpawns, Assembly-CSharp
-        m_MethodName: PaneOpen
-        m_Mode: 1
+        m_MethodName: PaneOpenSpwam
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

@@ -5,13 +5,8 @@ using UnityEngine.UI;
 
 public class ItemSpawns : MonoBehaviour
 {
-
     //--買い物で生成するアイテム-------------------------
-    [SerializeField] GameObject Item1;
-    [SerializeField] GameObject Item2;
-    [SerializeField] GameObject Item3;
-    [SerializeField] GameObject Item4;
-    [SerializeField] GameObject Item5;
+    [SerializeField] GameObject[] items;
     [SerializeField] GameObject inventory;
     //---------------------------------------------------
 
@@ -19,82 +14,65 @@ public class ItemSpawns : MonoBehaviour
     [SerializeField] GameObject Openpanel;
     //---------------------------------------------------
 
-    //--インベントリでアイテムスロットに物を表示させるアイテムと親オブジェクト------
-    //[SerializeField] GameObject DisplayItem1;
-    //[SerializeField] GameObject Itemslot;
-    //---------------------------------------------------------------
+    //text
+    [SerializeField] Text ItemText;
 
-    private int TotalItemcouts = 1;
+    //==アイテムデータ==============================================================
+    [SerializeField] ItemData[] itemData;
+    //==============================================================================
 
-    // Update is called once per frame
-    
-    public void PaneOpen()
+    private int TotalItemcounts = 1;
+    private int selectedItemIndex;
+
+    // アイテムを選択してパネルを開くメソッド
+    public void PaneOpenSpwam(int index)
     {
+        selectedItemIndex = index;
         Openpanel.SetActive(true);
+        ItemText.text = $"{itemData[index].itemName} 値段${itemData[index].price} を買いますか？";
     }
 
+    // パネルを閉じるメソッド
     public void ClosePanel()
     {
         Openpanel.SetActive(false);
     }
 
-    public void Spawn1()
+    // はいボタンを押したときにアイテムをスポーンさせるメソッド
+    public void SpawnSelectedItem()
     {
-        if(TotalItemcouts <= 5)
+        if (TotalItemcounts <= 5)
         {
-            GameObject newItem1 = Instantiate(Item1, inventory.transform);
-            TotalItemcouts++;
-            GameManager.SetTotalItem(TotalItemcouts);
+            GameObject newItem = Instantiate(items[selectedItemIndex], inventory.transform);
+            TotalItemcounts++;
+            GameManager.SetTotalItem(TotalItemcounts);
         }
-        
+        ClosePanel();
     }
 
-    public void Spwan2()
+    // アイテムのパネルを開くためのメソッド
+    public void OnClickItem1()
     {
-        if (TotalItemcouts <= 5)
-        {
-            GameObject newItem2 = Instantiate(Item2, inventory.transform);
-            TotalItemcouts++;
-            GameManager.SetTotalItem(TotalItemcouts);
-        }
-        
-
+        PaneOpenSpwam(0);
     }
 
-    public void Spwan3()
+    public void OnClickItem2()
     {
-        if (TotalItemcouts <= 5)
-        {
-            GameObject newItem3 = Instantiate(Item3, inventory.transform);
-            TotalItemcouts++;
-            GameManager.SetTotalItem(TotalItemcouts);
-        }
-        
-
+        PaneOpenSpwam(1);
     }
 
-    public void Spwan4()
+    public void OnClickItem3()
     {
-        if (TotalItemcouts <= 5)
-        {
-            GameObject newItem4 = Instantiate(Item4, inventory.transform);
-            TotalItemcouts++;
-            GameManager.SetTotalItem(TotalItemcouts);
-
-        }
-
+        PaneOpenSpwam(2);
     }
 
-    public void Spwan5()
+    public void OnClickItem4()
     {
-        if (TotalItemcouts <= 5)
-        {
-            GameObject newItem5 = Instantiate(Item5, inventory.transform);
-            TotalItemcouts++;
-            GameManager.SetTotalItem(TotalItemcouts);
-        }
-        
-
+        PaneOpenSpwam(3);
     }
 
+    public void OnClickItem5()
+    {
+        PaneOpenSpwam(4);
+    }
 }
