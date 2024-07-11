@@ -16,4 +16,9 @@ public class SetShopItemDate : MonoBehaviour
     {
         
     }
+
+    public void SendItemDate()
+    {
+
+    }
 }
