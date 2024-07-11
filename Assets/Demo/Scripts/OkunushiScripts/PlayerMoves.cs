@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerMoves : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class PlayerMoves : MonoBehaviour
     [SerializeField] Moisturegauge moisturegauge;
     [SerializeField] Foodgauge foodgauge;
 
-    public int playerinitialmony = 3000;        //プレイヤーの最初に所持している金額
+    public int playerinitialmony = 3000;
     public float moveSpeed = 5f;
     public float turnSpeed = 10f;
 
@@ -22,8 +21,7 @@ public class PlayerMoves : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
-
-        // X軸とZ軸の回転を固定
+        GameManager.SetPlayerMony(playerinitialmony);
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
@@ -31,9 +29,8 @@ public class PlayerMoves : MonoBehaviour
     {
         ObjectOpen();
 
-        GameManager.SetPlayerMony(playerinitialmony);
+        playerinitialmony = GameManager.GetPlayerMony();
 
-        // shopcanvsがアクティブでない場合にのみ移動と回転を許可
         if (!shopcanvs.gameObject.activeSelf && !inventory.gameObject.activeSelf)
         {
             Move();
@@ -42,7 +39,6 @@ public class PlayerMoves : MonoBehaviour
             moisturegauge.MoisturegaugeStartStop();
             foodgauge.FoodgaugeStartStop();
         }
-        
     }
 
     void Move()
@@ -81,7 +77,6 @@ public class PlayerMoves : MonoBehaviour
 
     void ObjectOpen()
     {
-        // shopcanvsがアクティブでない場合にのみスペースキーの入力を受け付ける
         if (!shopcanvs.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
             bool isActive = !inventory.gameObject.activeSelf;

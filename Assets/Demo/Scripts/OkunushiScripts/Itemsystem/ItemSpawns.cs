@@ -5,24 +5,19 @@ using UnityEngine.UI;
 
 public class ItemSpawns : MonoBehaviour
 {
-    //--買い物で生成するアイテム-------------------------
     [SerializeField] GameObject[] items;
     [SerializeField] GameObject inventory;
-    //---------------------------------------------------
-
-    //--買う買わないを表示させるパネル-------------------
     [SerializeField] GameObject Openpanel;
-    //---------------------------------------------------
-
-    //text
     [SerializeField] Text ItemText;
-
-    //==アイテムデータ==============================================================
     [SerializeField] ItemData[] itemData;
-    //==============================================================================
 
     private int TotalItemcounts = 1;
     private int selectedItemIndex;
+
+    private void Update()
+    {
+        // 更新される所持金の表示
+    }
 
     // アイテムを選択してパネルを開くメソッド
     public void PaneOpenSpwam(int index)
@@ -41,11 +36,14 @@ public class ItemSpawns : MonoBehaviour
     // はいボタンを押したときにアイテムをスポーンさせるメソッド
     public void SpawnSelectedItem()
     {
-        if (TotalItemcounts <= 5)
+        int currentMoney = GameManager.GetPlayerMony();
+        if (TotalItemcounts <= 5 && currentMoney >= itemData[selectedItemIndex].price)
         {
             GameObject newItem = Instantiate(items[selectedItemIndex], inventory.transform);
             TotalItemcounts++;
             GameManager.SetTotalItem(TotalItemcounts);
+            currentMoney -= itemData[selectedItemIndex].price;
+            GameManager.SetPlayerMony(currentMoney);
         }
         ClosePanel();
     }

@@ -253,7 +253,7 @@ MonoBehaviour:
   timer: {fileID: 1435656053}
   moisturegauge: {fileID: 1047900978}
   foodgauge: {fileID: 225215166}
-  playerinitialmony: 5000
+  playerinitialmony: 500
   moveSpeed: 300
   turnSpeed: 10
 --- !u!54 &25943175
