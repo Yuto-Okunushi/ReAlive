@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3c63d7a6e5bcd4083c2fbdec31bc4a, type: 3}
   m_Name: Item4
   m_EditorClassIdentifier: 
-  itemName: 
-  price: 0
+  itemName: "\u30D8\u30EB\u30E1\u30C3\u30C8"
+  price: 300
   hp: 0
   hydration: 0
   food: 0
-  itemImage: {fileID: 0}
-  ItemSpawn: {fileID: 8224676127747972023, guid: 2e2d3e92c4d98614a9117b6fe39d4449, type: 3}
+  itemImage: {fileID: 21300000, guid: 19f95a4483e882c41bc5c646d41a5fbb, type: 3}
