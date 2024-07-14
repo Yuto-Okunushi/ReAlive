@@ -17,12 +17,6 @@ public class ButtonController : MonoBehaviour
         buttonSelected = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // ボタン選択はここで行わない
-    }
-
     // ボタンを選択するメソッド
     void SelectButton(Button button)
     {
