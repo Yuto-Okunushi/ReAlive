@@ -1,20 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // シーン管理のために追加
 
 public class DisasterSystem : MonoBehaviour
 {
     public static DisasterSystem Instance { get; private set; } // シングルトンのインスタンス
 
     public Vector3 startPoint; // スタート地点
-    public Vector3 destPoint; // 目的地
     public GameObject[] objectsToActivate; // ランダムで設定するオブジェクト群
 
     public GameObject activeObject; // アクティブになったオブジェクト
     public bool IsEvacPhase { get; private set; } // 避難フェーズが開始されたかどうか
 
-    private bool disasterTrig = false;
+    private bool disasterTrig = false; // 災害発生のトリガーフラグ
     private float evacTimer = 180f; // 3分(180秒)のタイマー
+    private bool restartGameLoop = false; // ゲームループ再開のフラグ
+    private Vector3 destPoint; // 目的地の位置
 
     private void Awake()
     {
@@ -23,7 +24,6 @@ public class DisasterSystem : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject); // ゲームオブジェクトがシーン間で破棄されないようにする
-            UnityEngine.Debug.Log("DisasterSystem インスタンスが設定されました");
         }
         else
         {
@@ -31,7 +31,7 @@ public class DisasterSystem : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         // 全てのオブジェクトを非アクティブにする
         foreach (var obj in objectsToActivate)
@@ -44,26 +44,31 @@ public class DisasterSystem : MonoBehaviour
     }
 
     // ゲームループの管理
-    IEnumerator GameLoop()
+    private IEnumerator GameLoop()
     {
         while (true)
         {
             // 準備フェーズの前に少し待機
             yield return new WaitForSeconds(5f);
+
             // 準備フェーズの開始
             yield return StartCoroutine(Prep());
+
             // 災害発生フェーズ
             yield return StartCoroutine(Disaster());
+
             // 避難フェーズの開始
             yield return StartCoroutine(Evac());
+
+            // ゲームループ再開待ち
+            yield return new WaitUntil(() => restartGameLoop);
+            restartGameLoop = false;
         }
     }
 
     // 準備フェーズの処理
-    IEnumerator Prep()
+    private IEnumerator Prep()
     {
-        UnityEngine.Debug.Log("準備フェーズ開始");
-
         // 災害フラグのリセット
         disasterTrig = false;
 
@@ -71,7 +76,7 @@ public class DisasterSystem : MonoBehaviour
         yield return StartCoroutine(PanelUI.Instance.PrepAnim());
 
         // ランダムな時間待機 (3分から4分の間)
-        float randomTime = UnityEngine.Random.Range(180f, 240f);
+        float randomTime = UnityEngine.Random.Range(1f, 10f);
         yield return new WaitForSeconds(randomTime);
 
         // 災害発生をトリガー
@@ -79,12 +84,11 @@ public class DisasterSystem : MonoBehaviour
     }
 
     // 災害発生をトリガー
-    void TriggerDisaster()
+    private void TriggerDisaster()
     {
         if (!disasterTrig)
         {
             disasterTrig = true;
-            UnityEngine.Debug.Log("災害発生");
 
             // プレイヤーの動きを停止
             Player.Instance.enabled = false;
@@ -95,10 +99,8 @@ public class DisasterSystem : MonoBehaviour
     }
 
     // 災害発生フェーズの処理
-    IEnumerator Disaster()
+    private IEnumerator Disaster()
     {
-        UnityEngine.Debug.Log("災害フェーズ開始");
-
         // 災害発生エフェクトの持続時間待機
         yield return new WaitForSeconds(DisasterEffect.Instance.duration);
 
@@ -113,9 +115,8 @@ public class DisasterSystem : MonoBehaviour
     }
 
     // 準備フェーズの終了処理
-    void EndPrep()
+    private void EndPrep()
     {
-        UnityEngine.Debug.Log("準備フェーズ終了");
         // 準備フェーズを無効化
         if (PanelUI.Instance.prepPanel != null)
         {
@@ -124,20 +125,35 @@ public class DisasterSystem : MonoBehaviour
     }
 
     // 避難フェーズの処理
-    IEnumerator Evac()
+    private IEnumerator Evac()
     {
-        UnityEngine.Debug.Log("避難フェーズ開始");
-
         // 避難フェーズのアニメーションを開始
         yield return StartCoroutine(PanelUI.Instance.EvacAnim());
 
-        // 3つのオブジェクトからランダムに1つをアクティブにする
+        // 少し待機
+        yield return new WaitForSeconds(1f);
+
+        // オブジェクトからランダムに1つをアクティブにし、その位置を目的地として設定
         foreach (var obj in objectsToActivate)
         {
             obj.SetActive(false);
         }
-        activeObject = objectsToActivate[UnityEngine.Random.Range(0, objectsToActivate.Length)];
+        int index = UnityEngine.Random.Range(0, objectsToActivate.Length);
+        activeObject = objectsToActivate[index];
         activeObject.SetActive(true);
+        destPoint = activeObject.transform.position;
+
+        UnityEngine.Debug.Log($"アクティブなオブジェクト: {activeObject.name}");
+
+        // ナビゲーションパネルの表示
+        if (index == 0)
+        {
+            StartCoroutine(PanelUI.Instance.NaviPanel1Anim());
+        }
+        else if (index == 1)
+        {
+            StartCoroutine(PanelUI.Instance.NaviPanel2Anim());
+        }
 
         IsEvacPhase = true;
 
@@ -147,13 +163,6 @@ public class DisasterSystem : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            // プレイヤーが目的地に到達したかチェック
-            if (Vector3.Distance(Player.Instance.transform.position, destPoint) < 1f)
-            {
-                ReachDest();
-                yield break; // コルーチンを終了
-            }
-
             yield return null;
         }
 
@@ -162,7 +171,7 @@ public class DisasterSystem : MonoBehaviour
     }
 
     // 避難フェーズの終了処理（タイムアウト）
-    void EndEvac()
+    private void EndEvac()
     {
         UnityEngine.Debug.Log("避難フェーズ終了 - タイムアウト");
 
@@ -173,16 +182,15 @@ public class DisasterSystem : MonoBehaviour
         }
 
         IsEvacPhase = false;
+        restartGameLoop = true;
     }
 
     // プレイヤーが目的地に到達した時の処理
-    void ReachDest()
+    public void ReachDest()
     {
-        UnityEngine.Debug.Log("プレイヤーが目的地に到達");
+        UnityEngine.Debug.Log("ReachDest メソッドが呼び出されました");
 
-        // プレイヤーをスタート地点に戻す
-        Player.Instance.transform.position = startPoint;
-
-        IsEvacPhase = false;
+        // Demo_EndingSceneに移動
+        SceneManager.LoadScene("Demo_Ending");
     }
 }
