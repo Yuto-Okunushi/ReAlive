@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DisasterSystem : MonoBehaviour
@@ -7,6 +8,10 @@ public class DisasterSystem : MonoBehaviour
 
     public Vector3 startPoint; // スタート地点
     public Vector3 destPoint; // 目的地
+    public GameObject[] objectsToActivate; // ランダムで設定するオブジェクト群
+
+    public GameObject activeObject; // アクティブになったオブジェクト
+    public bool IsEvacPhase { get; private set; } // 避難フェーズが開始されたかどうか
 
     private bool disasterTrig = false;
     private float evacTimer = 180f; // 3分(180秒)のタイマー
@@ -28,6 +33,12 @@ public class DisasterSystem : MonoBehaviour
 
     void Start()
     {
+        // 全てのオブジェクトを非アクティブにする
+        foreach (var obj in objectsToActivate)
+        {
+            obj.SetActive(false);
+        }
+
         // ゲームループのコルーチンを開始
         StartCoroutine(GameLoop());
     }
@@ -60,7 +71,7 @@ public class DisasterSystem : MonoBehaviour
         yield return StartCoroutine(PanelUI.Instance.PrepAnim());
 
         // ランダムな時間待機 (3分から4分の間)
-        float randomTime = UnityEngine.Random.Range(180f, 240f); // 変更要必須
+        float randomTime = UnityEngine.Random.Range(180f, 240f);
         yield return new WaitForSeconds(randomTime);
 
         // 災害発生をトリガー
@@ -120,6 +131,16 @@ public class DisasterSystem : MonoBehaviour
         // 避難フェーズのアニメーションを開始
         yield return StartCoroutine(PanelUI.Instance.EvacAnim());
 
+        // 3つのオブジェクトからランダムに1つをアクティブにする
+        foreach (var obj in objectsToActivate)
+        {
+            obj.SetActive(false);
+        }
+        activeObject = objectsToActivate[UnityEngine.Random.Range(0, objectsToActivate.Length)];
+        activeObject.SetActive(true);
+
+        IsEvacPhase = true;
+
         float timer = evacTimer;
 
         while (timer > 0f)
@@ -150,6 +171,8 @@ public class DisasterSystem : MonoBehaviour
         {
             Destroy(Player.Instance.gameObject);
         }
+
+        IsEvacPhase = false;
     }
 
     // プレイヤーが目的地に到達した時の処理
@@ -159,5 +182,7 @@ public class DisasterSystem : MonoBehaviour
 
         // プレイヤーをスタート地点に戻す
         Player.Instance.transform.position = startPoint;
+
+        IsEvacPhase = false;
     }
 }
