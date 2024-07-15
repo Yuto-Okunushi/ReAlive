@@ -60,7 +60,7 @@ public class DisasterSystem : MonoBehaviour
         yield return StartCoroutine(PanelUI.Instance.PrepAnim());
 
         // ランダムな時間待機 (3分から4分の間)
-        float randomTime = UnityEngine.Random.Range(20f, 24f); // 変更要必須
+        float randomTime = UnityEngine.Random.Range(180f, 240f); // 変更要必須
         yield return new WaitForSeconds(randomTime);
 
         // 災害発生をトリガー
