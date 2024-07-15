@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public string ItemDetailsName;      //アイテムの詳細を表示させる
     public Sprite ItemImage;
     public ItemData ShopItemDate;        //ショップアイテムのデータ格納
+    public SignDate Signdate;           //標識データの格納
     public int Playerhavemony;
 
     
@@ -167,6 +168,11 @@ public class GameManager : MonoBehaviour
         return instance.ShopItemDate = value;
     }
 
+    static public SignDate GetSignDate(SignDate value)
+    {
+        return instance.Signdate = value;
+    }
+
 
     //===SETTER==========================================================================================================
     static public float SetVolumeBGM(float value)
@@ -257,6 +263,8 @@ public class GameManager : MonoBehaviour
         instance.ItemImage= value;
     }
 
+    
+
     static public void SetPlayerMony(int value)
     {
         instance.Playerhavemony = value;
@@ -265,5 +273,10 @@ public class GameManager : MonoBehaviour
     public static void SetItemDate(ItemData itemData)
     {
         instance.ShopItemDate = itemData;
+    }
+
+    public static void SetSignDate(SignDate signDate)
+    {
+        instance.Signdate = signDate;
     }
 }
