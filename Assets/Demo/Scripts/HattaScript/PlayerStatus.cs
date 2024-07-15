@@ -14,8 +14,8 @@ public class PlayerStatus : MonoBehaviour
     private float currHyd;    // 現在の水分量
     private float currStress; // 現在のストレス量
 
-    public float hydRatePerUnit = 0.1f;    // 水分減少率（移動距離1ユニットあたり）
-    public float stressRatePerUnit = 0.1f; // ストレス減少率（移動距離1ユニットあたり）
+    public float hydRatePerUnit = 0.005f;    // 水分減少率（移動距離1ユニットあたり）
+    public float stressRatePerUnit = 0.005f; // ストレス減少率（移動距離1ユニットあたり）
 
     private Player player;     // プレイヤーの参照
     private Vector3 lastPos;   // プレイヤーの最後の位置
@@ -47,7 +47,6 @@ public class PlayerStatus : MonoBehaviour
         currHyd = maxHydration;
         currStress = maxStress;
         lastPos = player.transform.position;
-        UnityEngine.Debug.Log("初期化完了。現在の水分量: " + currHyd + ", 現在のストレス量: " + currStress);
 
         // ポストプロセス効果の取得
         ppVolume = FindObjectOfType<PostProcessVolume>();
@@ -56,13 +55,7 @@ public class PlayerStatus : MonoBehaviour
             foreach (var setting in ppVolume.profile.settings)
             {
                 effects.Add(setting);
-                UnityEngine.Debug.Log("ポストプロセス効果: " + setting.GetType().Name);
             }
-            UnityEngine.Debug.Log("PostProcess設定を取得しました。");
-        }
-        else
-        {
-            UnityEngine.Debug.LogWarning("Post Process VolumeまたはProfileが見つかりません。");
         }
 
         // UIの初期化
@@ -80,12 +73,10 @@ public class PlayerStatus : MonoBehaviour
     void UpdateStats()
     {
         float distance = Vector3.Distance(player.transform.position, lastPos); // 移動距離の計算
-        UnityEngine.Debug.Log("移動距離: " + distance);
         if (distance > 0)
         {
             // 移動があった場合のみ更新
             bool isRunning = Input.GetKey(KeyCode.LeftShift); // プレイヤーが走っているかを確認
-            UnityEngine.Debug.Log("走っている: " + isRunning);
             ReduceHydration(distance, isRunning); // 水分を減少
             ReduceStress(distance);               // ストレスを減少
             lastPos = player.transform.position;  // 最後の位置を更新
@@ -95,9 +86,8 @@ public class PlayerStatus : MonoBehaviour
     // 水分を減少させ、移動速度を調整
     void ReduceHydration(float distance, bool isRunning)
     {
-        float rate = isRunning ? hydRatePerUnit * 2 : hydRatePerUnit; // 走っている場合は減少率を倍にする
+        float rate = isRunning ? hydRatePerUnit * 1.2f : hydRatePerUnit; // 走っている場合は減少率を1.2倍にする
         currHyd -= distance * rate; // 水分量を減少
-        UnityEngine.Debug.Log("現在の水分量: " + currHyd);
         UpdateHydrationGauge(); // 水分ゲージを更新
         if (currHyd <= 0)
         {
@@ -118,7 +108,6 @@ public class PlayerStatus : MonoBehaviour
     void ReduceStress(float distance)
     {
         currStress -= distance * stressRatePerUnit; // ストレス量を減少
-        UnityEngine.Debug.Log("現在のストレス量: " + currStress);
         UpdateStressGauge(); // ストレスゲージを更新
         if (currStress <= 0)
         {
@@ -129,7 +118,7 @@ public class PlayerStatus : MonoBehaviour
         else
         {
             // ストレス量に応じて効果を適用
-            float effectFactor = 1 - Mathf.Clamp01(currStress / maxStress);
+            float effectFactor = 0.3f * (1 - Mathf.Clamp01(currStress / maxStress)); // 効果をさらに弱める
             ApplyEffects(effectFactor);
         }
     }
@@ -138,7 +127,6 @@ public class PlayerStatus : MonoBehaviour
     void Die()
     {
         player.gameObject.SetActive(false);
-        UnityEngine.Debug.Log("プレイヤーが死亡しました");
     }
 
     // ポストプロセス効果を適用
@@ -149,23 +137,20 @@ public class PlayerStatus : MonoBehaviour
             if (effect is DepthOfField dof)
             {
                 // Depth of Field（ぼやけ効果）の適用
-                dof.focusDistance.value = Mathf.Lerp(10f, 2f, intensity); // より強いぼやけ効果
-                dof.aperture.value = Mathf.Lerp(5.6f, 22f, intensity); // より強いぼやけ効果
-                UnityEngine.Debug.Log("ぼやけ効果適用: " + intensity);
+                dof.focusDistance.value = Mathf.Lerp(10f, 7f, intensity); // 効果をさらに弱める
+                dof.aperture.value = Mathf.Lerp(5.6f, 8f, intensity); // 効果をさらに弱める
             }
             else if (effect is ColorGrading cg)
             {
                 // Color Grading（暗さ効果）の適用
-                cg.postExposure.value = Mathf.Lerp(0f, -10f, intensity); // より強い暗さ
-                cg.contrast.value = Mathf.Lerp(0f, 100f, intensity); // より強いコントラスト
-                UnityEngine.Debug.Log("画面の暗さ適用: " + intensity);
+                cg.postExposure.value = Mathf.Lerp(0f, -3f, intensity); // 効果をさらに弱める
+                cg.contrast.value = Mathf.Lerp(0f, 30f, intensity); // 効果をさらに弱める
             }
             else if (effect is Vignette vg)
             {
                 // Vignette（周囲暗さ効果）の適用
-                vg.intensity.value = Mathf.Lerp(0f, 1f, intensity); // より強いビネット効果
-                vg.smoothness.value = Mathf.Lerp(0.2f, 0.5f, intensity);
-                UnityEngine.Debug.Log("ビネット効果適用: " + intensity);
+                vg.intensity.value = Mathf.Lerp(0f, 0.3f, intensity); // 効果をさらに弱める
+                vg.smoothness.value = Mathf.Lerp(0.2f, 0.25f, intensity); // 効果をさらに弱める
             }
         }
     }
