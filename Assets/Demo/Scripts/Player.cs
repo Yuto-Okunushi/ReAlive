@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
         if (DisasterSystem.Instance.IsEvacPhase && other.gameObject == DisasterSystem.Instance.activeObject)
         {
             UnityEngine.Debug.Log("プレイヤーが設定されたオブジェクトに触れました: " + other.gameObject.name);
+            DisasterSystem.Instance.ReachDest(); // プレイヤーが目的地に到達したときの処理を呼び出す
         }
     }
 }

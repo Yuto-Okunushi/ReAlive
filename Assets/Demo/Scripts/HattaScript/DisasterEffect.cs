@@ -60,7 +60,7 @@ public class DisasterEffect : MonoBehaviour
                 float currentMagnitude = Mathf.Lerp(initialMagnitude, finalMagnitude, elapsed / duration);
                 noise.m_AmplitudeGain = currentMagnitude;
                 noise.m_FrequencyGain = currentMagnitude;
-                UnityEngine.Debug.Log("ƒJƒƒ‰‚ª—h‚ê‚Ä‚¢‚Ü‚·: Amplitude=" + noise.m_AmplitudeGain + ", Frequency=" + noise.m_FrequencyGain);
+                //UnityEngine.Debug.Log("ƒJƒƒ‰‚ª—h‚ê‚Ä‚¢‚Ü‚·: Amplitude=" + noise.m_AmplitudeGain + ", Frequency=" + noise.m_FrequencyGain);
             }
             // ‘±ŠÔ‚ğ’´‚¦‚½‚çŒ³‚ÌˆÊ’u‚É–ß‚·
             else
@@ -75,7 +75,7 @@ public class DisasterEffect : MonoBehaviour
     {
         elapsed = 0.0f;
         isShaking = true;
-        UnityEngine.Debug.Log("ĞŠQ‚ªƒgƒŠƒK[‚³‚ê‚Ü‚µ‚½");
+        //UnityEngine.Debug.Log("ĞŠQ‚ªƒgƒŠƒK[‚³‚ê‚Ü‚µ‚½");
     }
 
     // ĞŠQ‚ğ’â~‚·‚éƒƒ\ƒbƒh
@@ -85,7 +85,7 @@ public class DisasterEffect : MonoBehaviour
         {
             noise.m_AmplitudeGain = 0f;
             noise.m_FrequencyGain = 0f;
-            UnityEngine.Debug.Log("ƒJƒƒ‰‚Ì—h‚ê‚ªI—¹‚µ‚Ü‚µ‚½");
+            //UnityEngine.Debug.Log("ƒJƒƒ‰‚Ì—h‚ê‚ªI—¹‚µ‚Ü‚µ‚½");
         }
         isShaking = false;
     }

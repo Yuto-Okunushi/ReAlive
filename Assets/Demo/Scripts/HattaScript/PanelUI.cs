@@ -8,6 +8,8 @@ public class PanelUI : MonoBehaviour
 
     public Transform prepPanel; // 準備フェーズのパネル
     public Transform evacPanel; // 避難フェーズのパネル
+    public Transform naviPanel_1; // ナビゲーションパネル1
+    public Transform naviPanel_2; // ナビゲーションパネル2
 
     private void Awake()
     {
@@ -29,16 +31,18 @@ public class PanelUI : MonoBehaviour
     private void Start()
     {
         // パネルの初期回転角度を設定
-        if (prepPanel != null)
-        {
-            prepPanel.rotation = Quaternion.Euler(90, 0, 0);
-            prepPanel.gameObject.SetActive(false); // 初期状態ではパネルを非表示にする
-        }
+        InitializePanel(prepPanel);
+        InitializePanel(evacPanel);
+        InitializePanel(naviPanel_1);
+        InitializePanel(naviPanel_2);
+    }
 
-        if (evacPanel != null)
+    private void InitializePanel(Transform panel)
+    {
+        if (panel != null)
         {
-            evacPanel.rotation = Quaternion.Euler(90, 0, 0);
-            evacPanel.gameObject.SetActive(false); // 初期状態ではパネルを非表示にする
+            panel.rotation = Quaternion.Euler(90, 0, 0);
+            panel.gameObject.SetActive(false); // 初期状態ではパネルを非表示にする
         }
     }
 
@@ -53,7 +57,7 @@ public class PanelUI : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // パネルを0.7秒かけて回転させる（90度から0度へ）
-        yield return prepPanel.DORotate(new Vector3(0, 0, 0), 0.7f).WaitForCompletion();
+        yield return prepPanel.DORotate(Vector3.zero, 0.7f).WaitForCompletion();
 
         // 1秒待機
         yield return new WaitForSeconds(1f);
@@ -76,7 +80,7 @@ public class PanelUI : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // パネルを0.7秒かけて回転させる（90度から0度へ）
-        yield return evacPanel.DORotate(new Vector3(0, 0, 0), 0.7f).WaitForCompletion();
+        yield return evacPanel.DORotate(Vector3.zero, 0.7f).WaitForCompletion();
 
         // 1秒待機
         yield return new WaitForSeconds(1f);
@@ -86,5 +90,51 @@ public class PanelUI : MonoBehaviour
 
         // パネルを非表示にする
         evacPanel.gameObject.SetActive(false);
+    }
+
+    public IEnumerator NaviPanel1Anim()
+    {
+        if (naviPanel_1 == null) yield break;
+
+        // パネルを表示
+        naviPanel_1.gameObject.SetActive(true);
+
+        // 0.5秒待機
+        yield return new WaitForSeconds(0.5f);
+
+        // パネルを0.7秒かけて回転させる（90度から0度へ）
+        yield return naviPanel_1.DORotate(Vector3.zero, 0.7f).WaitForCompletion();
+
+        // 1秒待機
+        yield return new WaitForSeconds(1f);
+
+        // パネルを0.7秒かけて回転させる（0度から90度へ戻す）
+        yield return naviPanel_1.DORotate(new Vector3(90, 0, 0), 0.7f).WaitForCompletion();
+
+        // パネルを非表示にする
+        naviPanel_1.gameObject.SetActive(false);
+    }
+
+    public IEnumerator NaviPanel2Anim()
+    {
+        if (naviPanel_2 == null) yield break;
+
+        // パネルを表示
+        naviPanel_2.gameObject.SetActive(true);
+
+        // 0.5秒待機
+        yield return new WaitForSeconds(0.5f);
+
+        // パネルを0.7秒かけて回転させる（90度から0度へ）
+        yield return naviPanel_2.DORotate(Vector3.zero, 0.7f).WaitForCompletion();
+
+        // 1秒待機
+        yield return new WaitForSeconds(1f);
+
+        // パネルを0.7秒かけて回転させる（0度から90度へ戻す）
+        yield return naviPanel_2.DORotate(new Vector3(90, 0, 0), 0.7f).WaitForCompletion();
+
+        // パネルを非表示にする
+        naviPanel_2.gameObject.SetActive(false);
     }
 }
