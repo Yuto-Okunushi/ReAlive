@@ -106,4 +106,13 @@ public class Player : MonoBehaviour
             isGrounded = true;
         }
     }
+
+    // オブジェクトとの接触を検出する処理
+    void OnTriggerEnter(Collider other)
+    {
+        if (DisasterSystem.Instance.IsEvacPhase && other.gameObject == DisasterSystem.Instance.activeObject)
+        {
+            UnityEngine.Debug.Log("プレイヤーが設定されたオブジェクトに触れました: " + other.gameObject.name);
+        }
+    }
 }
