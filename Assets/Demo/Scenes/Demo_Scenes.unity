@@ -562,11 +562,44 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2596135726865413120, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259136686685170596, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242596220801821895, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516339121701221746, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041527264472744721, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311530875284368927, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 7442414044028735368, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 7774197401547492088, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8215663859377374877, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7774197401547492088, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
 --- !u!1 &847065558
 GameObject:
@@ -1052,6 +1085,7 @@ MonoBehaviour:
   playerCam: {fileID: 2140422920}
   walkSpeed: 5
   runSpeed: 10
+  jumpForce: 5
 --- !u!54 &922123643
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1338,6 +1372,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426046445}
   m_CullTransparentMesh: 1
+--- !u!1 &1450092548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8215663859377374877, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
+  m_PrefabInstance: {fileID: 809384224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1450092550
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450092548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6940388725566404023, guid: fc976ce3467f86440b4ea434ea34d078, type: 3}
 --- !u!1 &1526627819
 GameObject:
   m_ObjectHideFlags: 0
