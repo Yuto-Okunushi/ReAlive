@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
 
     public float walkSpeed; // 現在の歩く速度
     public float runSpeed; // 現在の走る速度
+    public float jumpForce = 5f; // ジャンプ力
+
+    private Rigidbody rb; // Rigidbodyの参照
+    private bool isGrounded; // プレイヤーが地面に接しているかどうかのフラグ
 
     void Awake()
     {
@@ -25,6 +29,8 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject); // 既にインスタンスが存在する場合はこのオブジェクトを破棄
         }
+
+        rb = GetComponent<Rigidbody>(); // Rigidbodyコンポーネントを取得
     }
 
     void Start()
@@ -43,6 +49,12 @@ public class Player : MonoBehaviour
         // プレイヤー移動の正規化
         Vector3 moveDir = GetInput();
         Move(moveDir);
+
+        // ジャンプの入力をチェック
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Jump();
+        }
     }
 
     // 正規化されたプレイヤー移動の関数
@@ -77,5 +89,21 @@ public class Player : MonoBehaviour
     {
         float currSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed; // 走るか歩くかを決定
         transform.Translate(direction * currSpeed * Time.deltaTime, Space.World); // プレイヤーを移動
+    }
+
+    // ジャンプの処理
+    void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        isGrounded = false;
+    }
+
+    // 地面に接触したときの処理
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
     }
 }
