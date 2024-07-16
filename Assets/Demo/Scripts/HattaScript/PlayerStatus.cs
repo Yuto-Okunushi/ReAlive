@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 
+
 public class PlayerStatus : MonoBehaviour
 {
     public static PlayerStatus Instance { get; private set; }
@@ -25,6 +26,10 @@ public class PlayerStatus : MonoBehaviour
 
     public UnityEngine.UI.Image hydrationGauge; // 水分ゲージのImage
     public UnityEngine.UI.Image stressGauge;    // ストレスゲージのImage
+
+    //==奥主が追加したやつ=================================================================
+    public int playerinitialmony = 3000;        //プレイヤーの所持金
+    //=====================================================================================
 
     void Awake()
     {
@@ -61,12 +66,17 @@ public class PlayerStatus : MonoBehaviour
         // UIの初期化
         UpdateHydrationGauge();
         UpdateStressGauge();
+
+        GameManager.SetPlayerMony(playerinitialmony);       
     }
 
     void Update()
     {
         // ステータス更新
         UpdateStats();
+
+        playerinitialmony = GameManager.GetPlayerMony();        //ゲームマネージャーからデータの受け取り
+
     }
 
     // プレイヤーの位置に基づいてステータスを更新
