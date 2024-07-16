@@ -14,7 +14,13 @@ public class ButtonselectCheck : MonoBehaviour
     public void RestartButtonCheck()
     {
         Debug.Log("リスタートボタンが押されました");
-        SceneController.LoadNextScene("指定するシーン");
+        SceneController.LoadNextScene("Demo_Scenes");
+    }
+
+    public void TitleButtonCheck()
+    {
+        Debug.Log("タイトルボタンが押されました");
+        SceneController.LoadNextScene("Demo_Title");
     }
 
     public void EndButtonCheck()
