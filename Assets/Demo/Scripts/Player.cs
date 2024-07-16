@@ -139,14 +139,14 @@ public class Player : MonoBehaviour
         shopcanvs.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Debug.Log("Shop canvas opened");
+        UnityEngine.Debug.Log("Shop canvas opened");
     }
 
 
     //インベントリキャンバスを表示させる処理
     void ObjectOpen()
     {
-        if (!shopcanvs.gameObject.activeSelf && Input.GetKeyDown(KeyCode.E))
+        if (!shopcanvs.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Tab))
         {
             bool isActive = !inventory.gameObject.activeSelf;
             inventory.gameObject.SetActive(isActive);

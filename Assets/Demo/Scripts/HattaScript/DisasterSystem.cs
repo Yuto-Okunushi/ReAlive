@@ -75,6 +75,12 @@ public class DisasterSystem : MonoBehaviour
         // 準備フェーズのアニメーションを開始
         yield return StartCoroutine(PanelUI.Instance.PrepAnim());
 
+        // 少し待機
+        yield return new WaitForSeconds(1f);
+
+        // ナビゲーションパネル0のアニメーションを表示
+        yield return StartCoroutine(PanelUI.Instance.NaviPanel0Anim());
+
         // ランダムな時間待機 (3分から4分の間)
         float randomTime = UnityEngine.Random.Range(1f, 10f);
         yield return new WaitForSeconds(randomTime);
@@ -145,7 +151,7 @@ public class DisasterSystem : MonoBehaviour
 
         UnityEngine.Debug.Log($"アクティブなオブジェクト: {activeObject.name}");
 
-        // ナビゲーションパネルの表示
+        // ナビゲーションパネルの表示 (NaviPanel0を除く)
         if (index == 0)
         {
             StartCoroutine(PanelUI.Instance.NaviPanel1Anim());
