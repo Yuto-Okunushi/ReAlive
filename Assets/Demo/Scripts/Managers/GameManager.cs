@@ -168,9 +168,9 @@ public class GameManager : MonoBehaviour
         return instance.ShopItemDate = value;
     }
 
-    static public SignDate GetSignDate(SignDate value)
+    static public SignDate GetSignDate()
     {
-        return instance.Signdate = value;
+        return instance.Signdate;
     }
 
 

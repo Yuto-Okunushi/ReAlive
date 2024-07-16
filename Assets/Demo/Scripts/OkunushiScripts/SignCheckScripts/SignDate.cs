@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class SignDate : ScriptableObject
 {
     public string signName;        //標識の名前
-    public int singNumber;         //標識の登録番号
+    public int signNumber;         //標識の登録番号
     public string signDetaile;      //標識の詳細設定
-    public Sprite itemImage;       //標識のイメージ画像
+    public Sprite signImage;       //標識のイメージ画像
 }
