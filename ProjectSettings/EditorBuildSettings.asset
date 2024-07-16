@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Demo/Scenes/constructions/Buyitem.unity
     guid: d5308abb6257a5748a3fb2c67485d24a
+  - enabled: 1
+    path: Assets/Demo/Scenes/Demo_GameOver.unity
+    guid: 79f1387ccc4f7e641ad43ce0fd091a1d
+  - enabled: 1
+    path: Assets/Demo/Scenes/constructions/SignCheck.unity
+    guid: b9fbd3a21089d3f4daf12b5dddd2cb5e
   m_configObjects: {}
