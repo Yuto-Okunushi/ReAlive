@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Signs
   - Ground
+  - Sign1
+  - Sign2
+  - Sign3
   layers:
   - Default
   - TransparentFX

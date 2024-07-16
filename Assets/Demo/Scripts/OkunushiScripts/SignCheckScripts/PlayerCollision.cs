@@ -19,6 +19,11 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("•WŽ¯2‚É‚Ô‚Â‚©‚è‚Ü‚µ‚½");
             SendSignDate(1);
         }
+        else if (other.gameObject.tag == "Sign3")
+        {
+            Debug.Log("•WŽ¯2‚É‚Ô‚Â‚©‚è‚Ü‚µ‚½");
+            SendSignDate(2);
+        }
     }
 
     private void SendSignDate(int index)
