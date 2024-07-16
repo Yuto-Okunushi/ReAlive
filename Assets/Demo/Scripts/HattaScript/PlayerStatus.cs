@@ -113,14 +113,10 @@ public class PlayerStatus : MonoBehaviour
         {
             // ストレスが0になった場合の処理
             currStress = 0;
-            Die(); // プレイヤーを死亡させる
         }
-        else
-        {
-            // ストレス量に応じて効果を適用
-            float effectFactor = 0.3f * (1 - Mathf.Clamp01(currStress / maxStress)); // 効果をさらに弱める
-            ApplyEffects(effectFactor);
-        }
+        // ストレス量に応じて効果を適用
+        float effectFactor = 0.3f * (1 - Mathf.Clamp01(currStress / maxStress)); // 効果をさらに弱める
+        ApplyEffects(effectFactor);
     }
 
     // プレイヤーを死亡させる処理
@@ -137,20 +133,20 @@ public class PlayerStatus : MonoBehaviour
             if (effect is DepthOfField dof)
             {
                 // Depth of Field（ぼやけ効果）の適用
-                dof.focusDistance.value = Mathf.Lerp(10f, 7f, intensity); // 効果をさらに弱める
-                dof.aperture.value = Mathf.Lerp(5.6f, 8f, intensity); // 効果をさらに弱める
+                dof.focusDistance.value = Mathf.Lerp(10f, 2f, intensity); // 効果をさらに弱める
+                dof.aperture.value = Mathf.Lerp(5.6f, 22f, intensity); // 効果をさらに弱める
             }
             else if (effect is ColorGrading cg)
             {
                 // Color Grading（暗さ効果）の適用
-                cg.postExposure.value = Mathf.Lerp(0f, -3f, intensity); // 効果をさらに弱める
-                cg.contrast.value = Mathf.Lerp(0f, 30f, intensity); // 効果をさらに弱める
+                cg.postExposure.value = Mathf.Lerp(0f, -10f, intensity); // 効果をさらに弱める
+                cg.contrast.value = Mathf.Lerp(0f, 100f, intensity); // 効果をさらに弱める
             }
             else if (effect is Vignette vg)
             {
                 // Vignette（周囲暗さ効果）の適用
-                vg.intensity.value = Mathf.Lerp(0f, 0.3f, intensity); // 効果をさらに弱める
-                vg.smoothness.value = Mathf.Lerp(0.2f, 0.25f, intensity); // 効果をさらに弱める
+                vg.intensity.value = Mathf.Lerp(0f, 1f, intensity); // 効果をさらに弱める
+                vg.smoothness.value = Mathf.Lerp(0.2f, 0.5f, intensity); // 効果をさらに弱める
             }
         }
     }
