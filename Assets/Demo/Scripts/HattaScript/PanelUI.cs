@@ -8,6 +8,7 @@ public class PanelUI : MonoBehaviour
 
     public Transform prepPanel; // 準備フェーズのパネル
     public Transform evacPanel; // 避難フェーズのパネル
+    public Transform naviPanel_0; // ナビゲーションパネル0
     public Transform naviPanel_1; // ナビゲーションパネル1
     public Transform naviPanel_2; // ナビゲーションパネル2
 
@@ -33,6 +34,7 @@ public class PanelUI : MonoBehaviour
         // パネルの初期回転角度を設定
         InitializePanel(prepPanel);
         InitializePanel(evacPanel);
+        InitializePanel(naviPanel_0);
         InitializePanel(naviPanel_1);
         InitializePanel(naviPanel_2);
     }
@@ -90,6 +92,29 @@ public class PanelUI : MonoBehaviour
 
         // パネルを非表示にする
         evacPanel.gameObject.SetActive(false);
+    }
+
+    public IEnumerator NaviPanel0Anim()
+    {
+        if (naviPanel_0 == null) yield break;
+
+        // パネルを表示
+        naviPanel_0.gameObject.SetActive(true);
+
+        // 0.5秒待機
+        yield return new WaitForSeconds(0.5f);
+
+        // パネルを0.7秒かけて回転させる（90度から0度へ）
+        yield return naviPanel_0.DORotate(Vector3.zero, 0.7f).WaitForCompletion();
+
+        // 1秒待機
+        yield return new WaitForSeconds(1f);
+
+        // パネルを0.7秒かけて回転させる（0度から90度へ戻す）
+        yield return naviPanel_0.DORotate(new Vector3(90, 0, 0), 0.7f).WaitForCompletion();
+
+        // パネルを非表示にする
+        naviPanel_0.gameObject.SetActive(false);
     }
 
     public IEnumerator NaviPanel1Anim()
