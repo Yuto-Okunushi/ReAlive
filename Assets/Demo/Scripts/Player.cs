@@ -17,6 +17,12 @@ public class Player : MonoBehaviour
     private Rigidbody rb; // Rigidbodyの参照
     private bool isGrounded; // プレイヤーが地面に接しているかどうかのフラグ
 
+    //==奥主が追加したやつ==============================================================
+    [SerializeField] Canvas shopcanvs;
+    [SerializeField] GameObject shopobject;
+    [SerializeField] GameObject inventory;
+    //==================================================================================
+
     void Awake()
     {
         // シングルトンのインスタンスを設定
@@ -47,8 +53,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         // プレイヤー移動の正規化
-        Vector3 moveDir = GetInput();
-        Move(moveDir);
+
+        ObjectOpen();
+        if (!shopcanvs.gameObject.activeSelf && !inventory.gameObject.activeSelf)
+        {
+            Vector3 moveDir = GetInput();
+            Move(moveDir);
+        }
 
         // ジャンプの入力をチェック
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -105,6 +116,11 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+
+        if (collision.gameObject == shopobject)
+        {
+            Openshopcanvs();
+        }
     }
 
     // オブジェクトとの接触を検出する処理
@@ -114,6 +130,36 @@ public class Player : MonoBehaviour
         {
             UnityEngine.Debug.Log("プレイヤーが設定されたオブジェクトに触れました: " + other.gameObject.name);
             DisasterSystem.Instance.ReachDest(); // プレイヤーが目的地に到達したときの処理を呼び出す
+        }
+    }
+
+    //ショップキャンバスを表示させる処理
+    public void Openshopcanvs()
+    {
+        shopcanvs.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Debug.Log("Shop canvas opened");
+    }
+
+
+    //インベントリキャンバスを表示させる処理
+    void ObjectOpen()
+    {
+        if (!shopcanvs.gameObject.activeSelf && Input.GetKeyDown(KeyCode.E))
+        {
+            bool isActive = !inventory.gameObject.activeSelf;
+            inventory.gameObject.SetActive(isActive);
+            if (isActive)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
     }
 }
