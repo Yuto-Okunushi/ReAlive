@@ -6274,6 +6274,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec57dd1c96e42774988728cb67765efa, type: 2}
   - {fileID: 11400000, guid: 57d05342412d70142833085c5da2ec66, type: 2}
   - {fileID: 11400000, guid: 935b03f9a93c8994083626bfac5e02d8, type: 2}
+  SignPanel: {fileID: 1837630117}
+  displayDuration: 3
 --- !u!136 &1473063529
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7835,7 +7837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1837630118
 RectTransform:
   m_ObjectHideFlags: 0
