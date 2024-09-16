@@ -18,15 +18,13 @@ public class GameManager : MonoBehaviour
     public float volumeSE;  //SoundEffectの音量
     public float volumeVOICE; //Voiceの音量
     public float durationCrossBGM;  //BGMをクロスフェードさせるときの間の時間
-    //=============================================================================
-
+  　//=============================================================================
     
-
     public string nowScene;     //現在どのシーンにいるか
 
     public bool isSceneLoading = false;   //現在シーン遷移してるか。
 
-    
+
 
     public bool isGame = false; //現在何らかのモードのゲーム中かどうか
 
@@ -40,9 +38,11 @@ public class GameManager : MonoBehaviour
     public Sprite ItemImage;
     public ItemData ShopItemDate;        //ショップアイテムのデータ格納
     public SignDate Signdate;           //標識データの格納
-    public int Playerhavemony;
+    public int Playerhavemony;          //プレイヤーの所持金
+    public float PlayerHp;              //プレイヤーのHP
+    public float PlayerStress;          //プレイヤーのストレス値
+    public float PlayerHydration;       //プレイヤーの水分量
 
-    
 
     private void Awake()
     {
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         yield return new WaitForSeconds(delayButtonAnim);
-        SceneController.SceneTransitionAnimation(parent,transitionName);
+        SceneController.SceneTransitionAnimation(parent, transitionName);
         yield return new WaitForSeconds(delaySceneTrans);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         return instance.durationCrossBGM;
     }
 
-    
+
 
     static public string GetNowScene()
     {
@@ -173,6 +173,21 @@ public class GameManager : MonoBehaviour
         return instance.Signdate;
     }
 
+    static public float GetPlayerHp()
+    {
+        return instance.PlayerHp;
+    }
+
+    static public float GetPlayerStress(float value)
+    {
+        return instance.PlayerStress = value;
+    }
+
+    static public float GetPlayerHydration(float value)
+    {
+        return instance.PlayerHydration = value;
+    }
+
 
     //===SETTER==========================================================================================================
     static public float SetVolumeBGM(float value)
@@ -216,7 +231,7 @@ public class GameManager : MonoBehaviour
         instance.durationCrossBGM = value;
     }
 
-    
+
 
     static public void SetNowScene(string name)
     {
@@ -260,10 +275,10 @@ public class GameManager : MonoBehaviour
 
     static public void SetItemImage(Sprite value)
     {
-        instance.ItemImage= value;
+        instance.ItemImage = value;
     }
 
-    
+
 
     static public void SetPlayerMony(int value)
     {
@@ -278,5 +293,20 @@ public class GameManager : MonoBehaviour
     public static void SetSignDate(SignDate signDate)
     {
         instance.Signdate = signDate;
+    }
+
+    public static void SetPlayerHp(float value)     //プレイヤーのHP受け渡し
+    {
+        instance.PlayerHp = value;
+    }
+
+    public static void SetPlayerStress(float value)     //プレイヤーのHP受け渡し
+    {
+        instance.PlayerStress = value;
+    }
+
+    public static void SetPlayerHydration(float value)     //プレイヤーの水分受け渡し
+    {
+        instance.PlayerHydration = value;
     }
 }

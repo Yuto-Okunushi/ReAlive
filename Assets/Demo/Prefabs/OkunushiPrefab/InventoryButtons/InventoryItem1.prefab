@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3183270076258879367}
   - component: {fileID: 3391335466302895166}
   - component: {fileID: 3654726625659796975}
+  - component: {fileID: 4898433578829018105}
   m_Layer: 5
   m_Name: InventoryItem1
   m_TagString: Untagged
@@ -123,13 +124,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 3391335466302895166}
+        m_TargetAssemblyTypeName: SetDateBase, Assembly-CSharp
+        m_MethodName: SendHydration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -151,6 +152,9 @@ MonoBehaviour:
   itemDescription: "\u6C34"
   itemDetails: "\u4E00\u822C\u7684\u306A\u6C34"
   itemImage: {fileID: 21300000, guid: e4333fb6a4a7bbf46ad1ba4e6f59c351, type: 3}
+  playerHydration: 30
+  playerStress: 30
+  YesNopanel: {fileID: 0}
 --- !u!114 &3654726625659796975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,3 +184,16 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &4898433578829018105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4700508576631666468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4854430f3db648c47a2a72ed53a84d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemUseYesNoPanel: {fileID: 0}
