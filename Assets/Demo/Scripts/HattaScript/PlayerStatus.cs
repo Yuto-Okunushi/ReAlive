@@ -12,8 +12,8 @@ public class PlayerStatus : MonoBehaviour
     public float maxHydration = 100f; // 最大水分量
     public float maxStress = 100f;    // 最大ストレス量
 
-    private float currHyd;    // 現在の水分量
-    private float currStress; // 現在のストレス量
+    public float currHyd;    // 現在の水分量
+    public float currStress; // 現在のストレス量
 
     public float hydRatePerUnit = 0.005f;    // 水分減少率（移動距離1ユニットあたり）
     public float stressRatePerUnit = 0.005f; // ストレス減少率（移動距離1ユニットあたり）
@@ -52,6 +52,9 @@ public class PlayerStatus : MonoBehaviour
         currHyd = maxHydration;
         currStress = maxStress;
         lastPos = player.transform.position;
+        GameManager.SetPlayerHydration(currHyd);
+        GameManager.SetPlayerStress(currStress);
+        GameManager.SetPlayerMony(playerinitialmony);
 
         // ポストプロセス効果の取得
         ppVolume = FindObjectOfType<PostProcessVolume>();
@@ -67,16 +70,13 @@ public class PlayerStatus : MonoBehaviour
         UpdateHydrationGauge();
         UpdateStressGauge();
 
-        GameManager.SetPlayerMony(playerinitialmony);       
+             
     }
 
     void Update()
     {
         // ステータス更新
         UpdateStats();
-
-        playerinitialmony = GameManager.GetPlayerMony();        //ゲームマネージャーからデータの受け取り
-
     }
 
     // プレイヤーの位置に基づいてステータスを更新
@@ -90,6 +90,10 @@ public class PlayerStatus : MonoBehaviour
             ReduceHydration(distance, isRunning); // 水分を減少
             ReduceStress(distance);               // ストレスを減少
             lastPos = player.transform.position;  // 最後の位置を更新
+            playerinitialmony = GameManager.GetPlayerMony();        //ゲームマネージャーからデータの受け取り
+            GameManager.GetPlayerStress(currStress);    //アイテムを使った時のデータ受け取り
+            GameManager.GetPlayerHydration(currHyd);        //プレイヤーアイテムを使った時の数値受け取り
+
         }
     }
 
@@ -111,6 +115,7 @@ public class PlayerStatus : MonoBehaviour
             float speedFactor = Mathf.Clamp01(currHyd / maxHydration);
             player.walkSpeed = player.baseWalkSpeed * speedFactor;
             player.runSpeed = player.baseRunSpeed * speedFactor;
+            GameManager.SetPlayerMony(playerinitialmony);       //ゲームマネージャーにデータの受け渡し
         }
     }
 

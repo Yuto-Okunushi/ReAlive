@@ -4494,6 +4494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHydration: 100
   maxStress: 100
+  currHyd: 0
+  currStress: 0
   hydRatePerUnit: 0.008
   stressRatePerUnit: 0.1
   hydrationGauge: {fileID: 1619915245}
