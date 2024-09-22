@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     //インスタンス作成
     public static GameManager instance = null;
 
+    public float test;
+    public float PlusTest;
+
     //ゲームマネージャ内メンバ変数
 
     //===音関係====================================================================
@@ -40,8 +43,11 @@ public class GameManager : MonoBehaviour
     public SignDate Signdate;           //標識データの格納
     public int Playerhavemony;          //プレイヤーの所持金
     public float PlayerHp;              //プレイヤーのHP
-    public float PlayerStress;          //プレイヤーのストレス値
-    public float PlayerHydration;       //プレイヤーの水分量
+    public float PlayerStress = 0;      //プレイヤーのストレス値
+    public float PlayerHydration = 0;       //プレイヤーの水分量
+
+    public float maxHydration = 100f; // 最大水分量
+    public float maxStress = 100f;    // 最大ストレス量
 
 
     private void Awake()
@@ -178,15 +184,22 @@ public class GameManager : MonoBehaviour
         return instance.PlayerHp;
     }
 
-    static public float GetPlayerStress(float value)
+    static public float GetPlayerStress(float value)        //ストレス受け渡し
     {
-        return instance.PlayerStress = value;
+        instance.PlayerStress = value;
+        return instance.PlayerStress + instance.test;
     }
 
-    static public float GetPlayerHydration(float value)
+    static public float GetPlayerHydration(float value)     //水分受け渡し
     {
-        return instance.PlayerHydration = value;
+        instance.PlayerHydration = value; // 渡された値を PlayerHydration に代入
+        return instance.PlayerHydration + instance.test;    // 合計値を返す
+
     }
+
+
+
+
 
 
     //===SETTER==========================================================================================================
@@ -285,28 +298,52 @@ public class GameManager : MonoBehaviour
         instance.Playerhavemony = value;
     }
 
-    public static void SetItemDate(ItemData itemData)
+    static public void SetItemDate(ItemData itemData)
     {
         instance.ShopItemDate = itemData;
     }
 
-    public static void SetSignDate(SignDate signDate)
+    static public void SetSignDate(SignDate signDate)
     {
         instance.Signdate = signDate;
     }
 
-    public static void SetPlayerHp(float value)     //プレイヤーのHP受け渡し
+    static public void SetPlayerHp(float value)     //プレイヤーのHP受け渡し
     {
         instance.PlayerHp = value;
     }
 
-    public static void SetPlayerStress(float value)     //プレイヤーのHP受け渡し
+    static public void SetPlayerStress(float value)     //プレイヤーのストレス受け渡し
     {
         instance.PlayerStress = value;
     }
 
-    public static void SetPlayerHydration(float value)     //プレイヤーの水分受け渡し
+    static public void SendPlusStress(float value)
+    {
+        instance.PlayerStress += value;
+        PlayerStatus.Instance.currStress = instance.PlayerStress;
+
+        if (PlayerStatus.Instance.currStress > 100)
+        {
+            instance.PlayerStress = 100;
+
+        }
+    }
+
+    static public void SetPlayerHydration(float value)     //プレイヤーの水分受け渡し
     {
         instance.PlayerHydration = value;
+    }
+
+    static public void SendPulusHydration(float value)
+    {
+        instance.PlayerHydration += value;
+        PlayerStatus.Instance.currHyd = instance.PlayerHydration; // 値をPlayerStatusに反映
+
+        if(PlayerStatus.Instance.currHyd > 100)
+        {
+            instance.PlayerHydration = 100;
+            
+        }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SetDateBase : MonoBehaviour
 {
-    [SerializeField] private ItemData itemDatabase;
+    [SerializeField] public ItemData itemDatabase;
 
     public string itemDescription;
     public string itemDetails;
@@ -15,9 +15,6 @@ public class SetDateBase : MonoBehaviour
     public float playerStress;       //ストレスデータをゲームマネージャーに受け渡す
 
     public GameObject YesNopanel;       //使うか最終的な判断をさせるパネル表示、アタッチ出来ないやつ
-
-    
-
 
 
     public void SendDate()
@@ -30,12 +27,13 @@ public class SetDateBase : MonoBehaviour
         GameManager.SetItemDetailsName(itemDetails);
     }
 
-    public void SendHydration()
+    public void PlusHydration()
     {
-        Debug.Log("ボタンが押されました");
-        GameManager.SetPlayerHydration(playerHydration);        //アイテム使用による水分データの受け渡し
-        GameManager.SetPlayerStress(playerStress);              //アイテム使用によるストレスデータの受け渡し
+        GameManager.SendPulusHydration(playerHydration);        //アイテム使用による水分データの受け渡し
+        GameManager.SendPlusStress(playerStress);               //アイテム使用によるストレス回復データの受け渡し
     }
+
+    
 
     
 

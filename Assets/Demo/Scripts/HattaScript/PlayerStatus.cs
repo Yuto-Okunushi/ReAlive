@@ -7,13 +7,14 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerStatus : MonoBehaviour
 {
-    public static PlayerStatus Instance { get; private set; }
+    public static PlayerStatus Instance = null;
 
     public float maxHydration = 100f; // 最大水分量
     public float maxStress = 100f;    // 最大ストレス量
 
-    public float currHyd;    // 現在の水分量
-    public float currStress; // 現在のストレス量
+    public float currHyd = 0;    // 現在の水分量
+    public float currStress = 0; // 現在のストレス量
+
 
     public float hydRatePerUnit = 0.005f;    // 水分減少率（移動距離1ユニットあたり）
     public float stressRatePerUnit = 0.005f; // ストレス減少率（移動距離1ユニットあたり）
@@ -52,9 +53,10 @@ public class PlayerStatus : MonoBehaviour
         currHyd = maxHydration;
         currStress = maxStress;
         lastPos = player.transform.position;
-        GameManager.SetPlayerHydration(currHyd);
-        GameManager.SetPlayerStress(currStress);
-        GameManager.SetPlayerMony(playerinitialmony);
+        GameManager.SetPlayerMony(playerinitialmony);   //最初の所持金を受け渡す
+        GameManager.SetPlayerHydration(currHyd);        //最初の水分量を受け渡す
+        GameManager.SetPlayerStress(currStress);        //最初のストレス値を受け渡す
+
 
         // ポストプロセス効果の取得
         ppVolume = FindObjectOfType<PostProcessVolume>();
@@ -82,17 +84,22 @@ public class PlayerStatus : MonoBehaviour
     // プレイヤーの位置に基づいてステータスを更新
     void UpdateStats()
     {
+        GameManager.GetPlayerHydration(currHyd);
+        GameManager.GetPlayerStress(currStress);
         float distance = Vector3.Distance(player.transform.position, lastPos); // 移動距離の計算
+        bool isRunning = Input.GetKey(KeyCode.LeftShift); // プレイヤーが走っているかを確認
+        ReduceHydration(distance, isRunning); // 水分を減少
+        ReduceStress(distance);               // ストレスを減少
+        lastPos = player.transform.position;  // 最後の位置を更新
+        playerinitialmony = GameManager.GetPlayerMony();        //ゲームマネージャーからデータの受け取り
+        
+        
+        
+        
         if (distance > 0)
         {
-            // 移動があった場合のみ更新
-            bool isRunning = Input.GetKey(KeyCode.LeftShift); // プレイヤーが走っているかを確認
-            ReduceHydration(distance, isRunning); // 水分を減少
-            ReduceStress(distance);               // ストレスを減少
-            lastPos = player.transform.position;  // 最後の位置を更新
-            playerinitialmony = GameManager.GetPlayerMony();        //ゲームマネージャーからデータの受け取り
-            GameManager.GetPlayerStress(currStress);    //アイテムを使った時のデータ受け取り
-            GameManager.GetPlayerHydration(currHyd);        //プレイヤーアイテムを使った時の数値受け取り
+            
+            //動作確認の為一時的に外します
 
         }
     }
@@ -109,13 +116,16 @@ public class PlayerStatus : MonoBehaviour
             currHyd = 0;
             Die(); // プレイヤーを死亡させる
         }
+        else if(currHyd >= maxHydration)     //値を最大値以上にしないときの処理
+        {
+            currHyd = maxHydration;
+        }
         else
         {
             // 水分量に応じて移動速度を調整
             float speedFactor = Mathf.Clamp01(currHyd / maxHydration);
             player.walkSpeed = player.baseWalkSpeed * speedFactor;
             player.runSpeed = player.baseRunSpeed * speedFactor;
-            GameManager.SetPlayerMony(playerinitialmony);       //ゲームマネージャーにデータの受け渡し
         }
     }
 
@@ -128,6 +138,10 @@ public class PlayerStatus : MonoBehaviour
         {
             // ストレスが0になった場合の処理
             currStress = 0;
+        }
+        else if(currStress >= maxStress)        //最大値以上になった時の処理
+        {
+            currStress = maxStress;
         }
         // ストレス量に応じて効果を適用
         float effectFactor = 0.3f * (1 - Mathf.Clamp01(currStress / maxStress)); // 効果をさらに弱める
@@ -170,11 +184,14 @@ public class PlayerStatus : MonoBehaviour
     void UpdateHydrationGauge()
     {
         hydrationGauge.fillAmount = currHyd / maxHydration;
+        GameManager.SetPlayerHydration(currHyd);
     }
 
     // ストレスゲージを更新
     void UpdateStressGauge()
     {
         stressGauge.fillAmount = currStress / maxStress;
+        GameManager.SetPlayerStress(currStress);
+
     }
 }
