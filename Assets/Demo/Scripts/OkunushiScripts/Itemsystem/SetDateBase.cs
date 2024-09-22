@@ -27,10 +27,11 @@ public class SetDateBase : MonoBehaviour
         GameManager.SetItemDetailsName(itemDetails);
     }
 
-    public void PlusHydration()
+    public void PlusHydrationStress()
     {
         GameManager.SendPulusHydration(playerHydration);        //アイテム使用による水分データの受け渡し
         GameManager.SendPlusStress(playerStress);               //アイテム使用によるストレス回復データの受け渡し
+        Destroy(this.gameObject);                               //使用後にこのオブジェクトを削除する
     }
 
     

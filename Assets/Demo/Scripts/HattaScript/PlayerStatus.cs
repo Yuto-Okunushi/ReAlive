@@ -92,16 +92,6 @@ public class PlayerStatus : MonoBehaviour
         ReduceStress(distance);               // ストレスを減少
         lastPos = player.transform.position;  // 最後の位置を更新
         playerinitialmony = GameManager.GetPlayerMony();        //ゲームマネージャーからデータの受け取り
-        
-        
-        
-        
-        if (distance > 0)
-        {
-            
-            //動作確認の為一時的に外します
-
-        }
     }
 
     // 水分を減少させ、移動速度を調整

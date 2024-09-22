@@ -122,7 +122,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3414186878145303829}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8802690424066726780}
+        m_TargetAssemblyTypeName: SetDateBase, Assembly-CSharp
+        m_MethodName: PlusHydrationStress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8802690424066726780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +151,9 @@ MonoBehaviour:
   itemDescription: "\u30D1\u30F3"
   itemDetails: "\u304A\u3044\u3057\u3044"
   itemImage: {fileID: 21300000, guid: f94cf0bab63d8f94cb5a5a509f1ce6ff, type: 3}
+  playerHydration: -20
+  playerStress: 50
+  YesNopanel: {fileID: 0}
 --- !u!114 &-4475432762498137928
 MonoBehaviour:
   m_ObjectHideFlags: 0
