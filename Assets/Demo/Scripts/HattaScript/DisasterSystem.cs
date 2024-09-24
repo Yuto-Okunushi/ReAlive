@@ -181,11 +181,8 @@ public class DisasterSystem : MonoBehaviour
     {
         UnityEngine.Debug.Log("避難フェーズ終了 - タイムアウト");
 
-        // プレイヤーオブジェクトを消す
-        if (Player.Instance != null)
-        {
-            Destroy(Player.Instance.gameObject);
-        }
+        // Demo_EndingSceneに移動
+        SceneManager.LoadScene("Demo_Ending");
 
         IsEvacPhase = false;
         restartGameLoop = true;
