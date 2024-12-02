@@ -23,10 +23,11 @@ public class WeightGagesystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateSlider();
+        int totalItem = GameManager.GetItemTotal();
+        weightSlider.value = totalItem;
     }
 
-    private void UpdateSlider()
+    public void UpdateSlider()
     {
         int totalItem = GameManager.GetItemTotal();
         weightSlider.value = totalItem;

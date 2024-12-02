@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     private Rigidbody rb; // Rigidbodyの参照
     private bool isGrounded; // プレイヤーが地面に接しているかどうかのフラグ
 
+    public bool isOpend = false;        //何かしらの他キャンバスが開かれているか
+
     //==奥主が追加したやつ==============================================================
     [SerializeField] Canvas shopcanvs;
     [SerializeField] GameObject shopobject;
@@ -119,6 +121,8 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject == shopobject)
         {
+            isOpend = true;
+
             Openshopcanvs();
         }
     }
