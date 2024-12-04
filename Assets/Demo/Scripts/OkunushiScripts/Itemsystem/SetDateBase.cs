@@ -14,8 +14,10 @@ public class SetDateBase : MonoBehaviour
     public float playerHydration;       //水分データをゲームマネージャーに受け渡す
     public float playerStress;       //ストレスデータをゲームマネージャーに受け渡す
 
-    public GameObject YesNopanel;       //使うか最終的な判断をさせるパネル表示、アタッチ出来ないやつ
+    public int nowPlayerItemWeight;
+    public int itemWeight;
 
+    public GameObject YesNopanel;       //使うか最終的な判断をさせるパネル表示、アタッチ出来ないやつ
 
     public void SendDate()
     {
@@ -29,8 +31,14 @@ public class SetDateBase : MonoBehaviour
 
     public void PlusHydrationStress()
     {
+        nowPlayerItemWeight = GameManager.GetItemTotal();
         GameManager.SendPulusHydration(playerHydration);        //アイテム使用による水分データの受け渡し
         GameManager.SendPlusStress(playerStress);               //アイテム使用によるストレス回復データの受け渡し
+        if(nowPlayerItemWeight > 0)
+        {
+            nowPlayerItemWeight = nowPlayerItemWeight - itemWeight;
+        }
+        GameManager.SetTotalItem(nowPlayerItemWeight);
         Destroy(this.gameObject);                               //使用後にこのオブジェクトを削除する
     }
 

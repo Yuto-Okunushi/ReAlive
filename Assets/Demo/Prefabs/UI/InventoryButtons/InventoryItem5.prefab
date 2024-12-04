@@ -153,6 +153,7 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: f44400144b481cc4c81d71cc7ca8d4ed, type: 3}
   playerHydration: 0
   playerStress: 0
+  itemWeight: 1
   YesNopanel: {fileID: 0}
 --- !u!114 &1824933490037786900
 MonoBehaviour:

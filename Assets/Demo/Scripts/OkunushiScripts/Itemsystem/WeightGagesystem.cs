@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class WeightGagesystem : MonoBehaviour
 {
     [SerializeField] Slider weightSlider;
+    int totalItem = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +24,13 @@ public class WeightGagesystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int totalItem = GameManager.GetItemTotal();
-        weightSlider.value = totalItem;
+        UpdateSlider();
     }
 
     public void UpdateSlider()
     {
-        int totalItem = GameManager.GetItemTotal();
+        totalItem = GameManager.GetItemTotal();
         weightSlider.value = totalItem;
+        Debug.Log(totalItem);
     }
 }
