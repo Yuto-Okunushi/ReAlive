@@ -11,13 +11,8 @@ public class ItemSpawns : MonoBehaviour
     [SerializeField] Text ItemText;
     [SerializeField] ItemData[] itemData;
 
-    private int TotalItemcounts = 1;
+    public int TotalItemcounts;     //プレイヤーのアイテム所持数
     private int selectedItemIndex;
-
-    private void Update()
-    {
-        // 更新される所持金の表示
-    }
 
     // アイテムを選択してパネルを開くメソッド
     public void PaneOpenSpwam(int index)
@@ -36,6 +31,7 @@ public class ItemSpawns : MonoBehaviour
     // はいボタンを押したときにアイテムをスポーンさせるメソッド
     public void SpawnSelectedItem()
     {
+        TotalItemcounts = GameManager.GetItemTotal();
         int currentMoney = GameManager.GetPlayerMony();
         if (TotalItemcounts <= 5 && currentMoney >= itemData[selectedItemIndex].price)
         {

@@ -30,6 +30,8 @@ public class PlayerStatus : MonoBehaviour
 
     //==奥主が追加したやつ=================================================================
     public int playerinitialmony = 3000;        //プレイヤーの所持金
+    public int playerHaveItem = 0;          //現在のプレイヤーアイテム所持数
+    public int playerMaxHaveItem = 5;       //限界所持数
     //=====================================================================================
 
     void Awake()
@@ -56,6 +58,7 @@ public class PlayerStatus : MonoBehaviour
         GameManager.SetPlayerMony(playerinitialmony);   //最初の所持金を受け渡す
         GameManager.SetPlayerHydration(currHyd);        //最初の水分量を受け渡す
         GameManager.SetPlayerStress(currStress);        //最初のストレス値を受け渡す
+        GameManager.SetTotalItem(playerHaveItem);       //最初に所持数を受け渡す
 
 
         // ポストプロセス効果の取得
@@ -86,6 +89,7 @@ public class PlayerStatus : MonoBehaviour
     {
         GameManager.GetPlayerHydration(currHyd);
         GameManager.GetPlayerStress(currStress);
+        playerHaveItem = GameManager.GetItemTotal();
         float distance = Vector3.Distance(player.transform.position, lastPos); // 移動距離の計算
         bool isRunning = Input.GetKey(KeyCode.LeftShift); // プレイヤーが走っているかを確認
         ReduceHydration(distance, isRunning); // 水分を減少
