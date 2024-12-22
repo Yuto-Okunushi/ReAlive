@@ -31,6 +31,5 @@ public class WeightGagesystem : MonoBehaviour
     {
         totalItem = GameManager.GetItemTotal();
         weightSlider.value = totalItem;
-        Debug.Log(totalItem);
     }
 }
