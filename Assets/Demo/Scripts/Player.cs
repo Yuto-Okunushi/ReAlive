@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     private bool isGrounded; // プレイヤーが地面に接しているかどうかのフラグ
 
     public bool isOpend = false;        //何かしらの他キャンバスが開かれているか
+    public bool isTimeline = false;     //タイムラインの再生中か
+    public bool isTalking = false;      //会話中かどうか
 
     //==奥主が追加したやつ==============================================================
     [SerializeField] Canvas shopcanvs;
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        GameManager.SetIsTimeline(isTimeline);
         // 初期速度を設定
         walkSpeed = baseWalkSpeed;
         runSpeed = baseRunSpeed;
@@ -54,20 +57,27 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        isTimeline = GameManager.GetTimelineflug();
+        isTalking = GameManager.GetIsTalking();
+
         // プレイヤー移動の正規化
 
         ObjectOpen();
-        if (!shopcanvs.gameObject.activeSelf && !inventory.gameObject.activeSelf)
+        if(!isTalking)
         {
-            Vector3 moveDir = GetInput();
-            Move(moveDir);
-        }
+            if (!shopcanvs.gameObject.activeSelf && !inventory.gameObject.activeSelf && !isTimeline)
+            {
+                Vector3 moveDir = GetInput();
+                Move(moveDir);
+            }
 
-        // ジャンプの入力をチェック
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            Jump();
+            // ジャンプの入力をチェック
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                Jump();
+            }
         }
+        
     }
 
     // 正規化されたプレイヤー移動の関数

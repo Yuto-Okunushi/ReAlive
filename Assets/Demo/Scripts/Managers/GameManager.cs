@@ -49,6 +49,12 @@ public class GameManager : MonoBehaviour
     public float maxHydration = 100f; // 最大水分量
     public float maxStress = 100f;    // 最大ストレス量
 
+    public bool isTimeline = false;
+
+    public string TalkDate;
+    public string NameDate;
+
+    public bool isTalking = false;
 
     private void Awake()
     {
@@ -97,6 +103,11 @@ public class GameManager : MonoBehaviour
 
 
     //===GETTER==========================================================================================================
+    static public bool GetIsTalking()
+    {
+        return instance.isTalking;
+    }
+
     static public float GetVolumeBGM()
     {
         return instance.volumeBGM;
@@ -197,12 +208,28 @@ public class GameManager : MonoBehaviour
 
     }
 
+    static public bool GetTimelineflug()
+    {
+        return instance.isTimeline;
+    }
 
+    static public string GetCSVTalk()
+    {
+        return instance.TalkDate;
+    }
 
-
+    static public string GetCSVCharactorName()
+    {
+        return instance.NameDate;
+    }
 
 
     //===SETTER==========================================================================================================
+    static public bool SetIsTalking(bool value)
+    {
+        return instance.isTalking = value;
+    }
+
     static public float SetVolumeBGM(float value)
     {
         if (value > 0)
@@ -269,6 +296,11 @@ public class GameManager : MonoBehaviour
     static public void SetBoostingReset2(bool tf)        ////コンボによるタイム増加のbool変数5コンボの場合の関数
     {
         instance.isBoosting2 = tf;
+    }
+
+    static public void SetIsTimeline(bool tf)
+    {
+        instance.isTimeline = tf;
     }
 
     static public void SetTotalItem(int value)
@@ -345,5 +377,15 @@ public class GameManager : MonoBehaviour
             instance.PlayerHydration = 100;
             
         }
+    }
+
+    static public void SendCSVTalk(string talknumber)
+    {
+        instance.TalkDate = talknumber;
+    }
+
+    static public void SendCSVCharactorName(string NameNumber)
+    {
+        instance.NameDate = NameNumber;
     }
 }
