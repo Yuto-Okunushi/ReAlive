@@ -2288,57 +2288,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -248509407985413918, guid: 70486352d1565174085679937e626763, type: 3}
---- !u!1 &497778903
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 497778904}
-  - component: {fileID: 497778905}
-  m_Layer: 0
-  m_Name: GameOver_0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &497778904
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497778903}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -578.7261, y: -203.03168, z: -35.94311}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 768598660}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &497778905
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497778903}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 2245a3e3bc373da4987e6907c9056fab, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 3608199716762682393, guid: 2245a3e3bc373da4987e6907c9056fab, type: 2}
-    value: {fileID: 922123646}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1001 &503961364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4360,7 +4309,6 @@ Transform:
   m_Children:
   - {fileID: 2060129511}
   - {fileID: 1983783704}
-  - {fileID: 497778904}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5778,6 +5726,7 @@ GameObject:
   - component: {fileID: 922123644}
   - component: {fileID: 922123645}
   - component: {fileID: 922123646}
+  - component: {fileID: 922123647}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5962,6 +5911,81 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &922123647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922123637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: ddf6ebdc4cb03ac42b78e6992e550fed, type: 2}
+    - {fileID: 11400000, guid: ec95364c7c8f3c049809bba557754d2a, type: 2}
+    - {fileID: 11400000, guid: 89f71e6e2c71e424f9ba9b52f139c5de, type: 2}
+    - {fileID: 11400000, guid: 431f936a0fac58b49b7de3cceef0e42f, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1162205026}
+          m_TargetAssemblyTypeName: TalkEventController, Assembly-CSharp
+          m_MethodName: Objectactivetrue
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1162205026}
+          m_TargetAssemblyTypeName: TalkEventController, Assembly-CSharp
+          m_MethodName: SelectEvent1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2060129512}
+          m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
+          m_MethodName: FlugTure
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2060129512}
+          m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
+          m_MethodName: FlugFalse
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &942010724
 GameObject:
   m_ObjectHideFlags: 0
@@ -7719,7 +7743,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162205024}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 50, y: 379.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12479,7 +12503,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1983783702}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 2245a3e3bc373da4987e6907c9056fab, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: ec94d31783a7e474bb162236136d7282, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -12491,6 +12515,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 0}
     value: {fileID: 0}
+  - key: {fileID: 7142189072314379535, guid: ec94d31783a7e474bb162236136d7282, type: 2}
+    value: {fileID: 922123646}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1983783704
