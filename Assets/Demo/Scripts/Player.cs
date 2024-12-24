@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject inventory;
     //==================================================================================
 
+    
+
     void Awake()
     {
         // シングルトンのインスタンスを設定
@@ -77,7 +79,6 @@ public class Player : MonoBehaviour
                 Jump();
             }
         }
-        
     }
 
     // 正規化されたプレイヤー移動の関数
@@ -176,4 +177,6 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    
 }
