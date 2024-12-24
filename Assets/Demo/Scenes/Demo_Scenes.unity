@@ -852,6 +852,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ea3547c43579a74a87675ecb707ed3e, type: 2}
   - {fileID: 11400000, guid: 002ed4ceb32c93f4b8b89964f575e566, type: 2}
   - {fileID: 11400000, guid: 102240dca199d084bb505252ff514b31, type: 2}
+  TotalItemcounts: 0
 --- !u!4 &311868527
 Transform:
   m_ObjectHideFlags: 0
@@ -4461,6 +4462,9 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 10
   jumpForce: 5
+  isOpend: 0
+  isTimeline: 0
+  isTalking: 0
   shopcanvs: {fileID: 1685751557}
   shopobject: {fileID: 1816160727}
   inventory: {fileID: 618489192}
@@ -4501,6 +4505,8 @@ MonoBehaviour:
   hydrationGauge: {fileID: 1619915245}
   stressGauge: {fileID: 1426046447}
   playerinitialmony: 3000
+  playerHaveItem: 0
+  playerMaxHaveItem: 5
 --- !u!4 &922210187 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7783087158310884658, guid: 253e8fb5f9b1f6c4397aa43734e43b63, type: 3}
