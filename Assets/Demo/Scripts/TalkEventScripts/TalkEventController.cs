@@ -36,7 +36,7 @@ public class TalkEventController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return) && isTalking)
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0) && isTalking )
         {
             //if•¶‚Å‚à‚µŽŸ‚Ì—v‘f‚É‰½‚©•¨‚ª‚ ‚Á‚½Žž‚É‚µ‚½‚¢
             TalkManager();

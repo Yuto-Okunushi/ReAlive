@@ -8,13 +8,13 @@ public class ButtonselectCheck : MonoBehaviour
     public void StartButtonCheck()
     {
         Debug.Log("スタートボタンが選択されました");
-        SceneController.LoadNextScene("Demo_Scenes");
+        SceneController.LoadNextScene("β_DemoScene");
     }
 
     public void RestartButtonCheck()
     {
         Debug.Log("リスタートボタンが押されました");
-        SceneController.LoadNextScene("Demo_Scenes");
+        SceneController.LoadNextScene("β_DemoScene");
     }
 
     public void TitleButtonCheck()
@@ -27,5 +27,10 @@ public class ButtonselectCheck : MonoBehaviour
     {
         Debug.Log("エンドボタンが選択されました");
         Application.Quit();
+    }
+
+    public void GoGameOverScene()
+    {
+        SceneController.LoadNextScene("GameOverScene");
     }
 }

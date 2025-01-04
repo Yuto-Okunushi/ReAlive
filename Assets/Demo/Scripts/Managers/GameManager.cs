@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
 
     public bool isTalking = false;
 
+    public bool isOpend = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -223,8 +225,16 @@ public class GameManager : MonoBehaviour
         return instance.NameDate;
     }
 
-
+    static public bool GetIsOpend()
+    {
+        return instance.isOpend;
+    }
     //===SETTER==========================================================================================================
+    static public bool SetIsOpend(bool value)
+    {
+        return instance.isOpend = value;
+    }
+
     static public bool SetIsTalking(bool value)
     {
         return instance.isTalking = value;

@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 
 public class TimeLineControll : MonoBehaviour
 {
-    [SerializeField] private PlayableDirector[] Timelines;
+    [SerializeField] public PlayableDirector[] Timelines;
 
     //地震発生時間
     public float earthquakeTime = 10.0f;
@@ -36,6 +36,12 @@ public class TimeLineControll : MonoBehaviour
     {
         //０番目のタイムラインを再生
         Timelines[0].Play();
+    }
+
+    public void FallRockTimeLine()
+    {
+        //１番目のタイムラインを再生
+        Timelines[1].Play();
     }
 
     public void FlugTure()

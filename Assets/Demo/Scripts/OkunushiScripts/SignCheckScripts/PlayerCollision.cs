@@ -7,6 +7,11 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] SignDate[] signDate;
     [SerializeField] private GameObject SignPanel;
     [SerializeField] private float displayDuration = 3.0f; // パネルを表示する時間（秒）
+    [SerializeField] TimeLineControll TimeLineControll;
+
+    public bool isOpend = false;        //何かしらの他キャンバスが開かれているか
+    public bool isTimeline = false;     //タイムラインの再生中か
+    public bool isTalking = false;      //会話中かどうか
 
     private void Start()
     {
@@ -14,7 +19,7 @@ public class PlayerCollision : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Sign1")
         {
@@ -33,6 +38,14 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("標識3にぶつかりました");
             SendSignDate(2);
             StartCoroutine(DisplaySignPanel());
+        }
+        else if(other.gameObject.tag == "GameOverObject1")
+        {
+            isTimeline = true;
+            GameManager.SetIsTimeline(isTimeline);
+            //タイムライン再生メソッドを呼び出す
+            TimeLineControll.FallRockTimeLine();
+
         }
     }
 

@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Demo/Scenes/constructions/Buyitem.unity
     guid: d5308abb6257a5748a3fb2c67485d24a
   - enabled: 1
+    path: Assets/Demo/Scenes/GameOverScene.unity
+    guid: 245ac356d02b30249b85eafa9f4f59d6
+  - enabled: 1
     path: Assets/Demo/Scenes/Demo_GameOver.unity
     guid: 79f1387ccc4f7e641ad43ce0fd091a1d
   - enabled: 1
