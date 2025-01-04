@@ -61,11 +61,12 @@ public class Player : MonoBehaviour
     {
         isTimeline = GameManager.GetTimelineflug();
         isTalking = GameManager.GetIsTalking();
+        isOpend = GameManager.GetIsOpend();
 
         // プレイヤー移動の正規化
 
         ObjectOpen();
-        if(!isTalking)
+        if(!isTalking && !isTimeline && !isOpend)
         {
             if (!shopcanvs.gameObject.activeSelf && !inventory.gameObject.activeSelf && !isTimeline)
             {
@@ -136,16 +137,14 @@ public class Player : MonoBehaviour
 
             Openshopcanvs();
         }
+
+        
     }
 
     // オブジェクトとの接触を検出する処理
     void OnTriggerEnter(Collider other)
     {
-        if (DisasterSystem.Instance.IsEvacPhase && other.gameObject == DisasterSystem.Instance.activeObject)
-        {
-            UnityEngine.Debug.Log("プレイヤーが設定されたオブジェクトに触れました: " + other.gameObject.name);
-            DisasterSystem.Instance.ReachDest(); // プレイヤーが目的地に到達したときの処理を呼び出す
-        }
+        
     }
 
     //ショップキャンバスを表示させる処理
@@ -163,6 +162,7 @@ public class Player : MonoBehaviour
     {
         if (!shopcanvs.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Tab))
         {
+            isOpend = true;
             bool isActive = !inventory.gameObject.activeSelf;
             inventory.gameObject.SetActive(isActive);
             if (isActive)
