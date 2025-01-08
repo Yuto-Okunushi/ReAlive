@@ -44,6 +44,18 @@ public class TimeLineControll : MonoBehaviour
         Timelines[1].Play();
     }
 
+    public void FlashBackTimeLine()
+    {
+        //１番目のタイムラインを再生
+        Timelines[2].Play();
+    }
+
+    public void DeadTimeLine()
+    {
+        //１番目のタイムラインを再生
+        Timelines[3].Play();
+    }
+
     public void FlugTure()
     {
         isTimeline = true;
