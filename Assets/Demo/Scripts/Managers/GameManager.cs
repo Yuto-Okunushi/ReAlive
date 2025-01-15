@@ -49,14 +49,14 @@ public class GameManager : MonoBehaviour
     public float maxHydration = 100f; // 最大水分量
     public float maxStress = 100f;    // 最大ストレス量
 
-    public bool isTimeline = false;
+    public bool isTimeline = false;     //タイムライン中かのフラグ
 
-    public string TalkDate;
-    public string NameDate;
+    public string TalkDate;         //CSVのトークデータ受け渡し変数
+    public string NameDate;         //CSVの名前トークデータ受け渡し変数
 
-    public bool isTalking = false;
+    public bool isTalking = false;      //会話イベント中かのフラグ
 
-    public bool isOpend = false;
+    public bool isOpend = false;        //インベントリが開かれているかのフラグ
 
     private void Awake()
     {
@@ -105,12 +105,13 @@ public class GameManager : MonoBehaviour
 
 
     //===GETTER==========================================================================================================
-    static public bool GetIsTalking()
+    static public bool GetIsTalking()       //会話イベント中
     {
         return instance.isTalking;
     }
 
-    static public float GetVolumeBGM()
+    //===使用していないメソッド、エラー回避の為に消していません=============================================================
+    static public float GetVolumeBGM()      
     {
         return instance.volumeBGM;
     }
@@ -129,20 +130,20 @@ public class GameManager : MonoBehaviour
     {
         return instance.durationCrossBGM;
     }
+    //=ここまでスルーしてください==================================================================================================================
 
 
-
-    static public string GetNowScene()
+    static public string GetNowScene()      //現在のシーン
     {
         return instance.nowScene;
     }
 
-    static public bool GetIsSceneLoading()
+    static public bool GetIsSceneLoading()      //シーンのロード中か
     {
         return instance.isSceneLoading;
     }
 
-    static public bool GetIsGame()
+    static public bool GetIsGame()          //操作中か確認
     {
         return instance.isGame;
     }
@@ -157,44 +158,34 @@ public class GameManager : MonoBehaviour
         return instance.isBoosting2;
     }
 
-    static public int GetItemTotal()
+    static public int GetItemTotal()        //アイテム所持数の取得
     {
         return instance.Totalitem;
     }
 
-    static public string getItemName()
+    static public string getItemName()      //アイテムの名前を取得
     {
         return instance.ItemName;
     }
 
-    static public string getItemDetailsName()
+    static public string getItemDetailsName()       //アイテム詳細情報の取得
     {
         return instance.ItemDetailsName;
     }
 
-    static public Sprite getItemImage()
+    static public Sprite getItemImage()         //アイテム画像取得
     {
         return instance.ItemImage;
     }
 
-    static public int GetPlayerMony()
+    static public int GetPlayerMony()           //プレイヤーの所持金取得
     {
         return instance.Playerhavemony;
     }
 
-    static public ItemData GetItemDate(ItemData value)
-    {
-        return instance.ShopItemDate = value;
-    }
-
-    static public SignDate GetSignDate()
+    static public SignDate GetSignDate()        //標識データの取得
     {
         return instance.Signdate;
-    }
-
-    static public float GetPlayerHp()
-    {
-        return instance.PlayerHp;
     }
 
     static public float GetPlayerStress(float value)        //ストレス受け渡し
@@ -210,142 +201,71 @@ public class GameManager : MonoBehaviour
 
     }
 
-    static public bool GetTimelineflug()
+    static public bool GetTimelineflug()            //タイムライン中か取得
     {
         return instance.isTimeline;
     }
 
-    static public string GetCSVTalk()
+    static public string GetCSVTalk()               //CSV会話データ取得
     {
         return instance.TalkDate;
     }
 
-    static public string GetCSVCharactorName()
+    static public string GetCSVCharactorName()      //CSVデータからキャラクター名の取得
     {
         return instance.NameDate;
     }
 
-    static public bool GetIsOpend()
+    static public bool GetIsOpend()                 //インベントリがあいているかの取得
     {
         return instance.isOpend;
     }
     //===SETTER==========================================================================================================
-    static public bool SetIsOpend(bool value)
-    {
-        return instance.isOpend = value;
-    }
 
-    static public bool SetIsTalking(bool value)
+    static public bool SetIsTalking(bool value)         //会話イベント中かの判定
     {
         return instance.isTalking = value;
     }
 
-    static public float SetVolumeBGM(float value)
-    {
-        if (value > 0)
-        {
-            return instance.volumeBGM = value;
-        }
-        else
-        {
-            return instance.volumeBGM = 0;
-        }
-    }
 
-    static public float SetVolumeSE(float value)
-    {
-        if (value > 0)
-        {
-            return instance.volumeSE = value;
-        }
-        else
-        {
-            return instance.volumeSE = 0;
-        }
-    }
-
-    static public float SetVolumeVOICE(float value)
-    {
-        if (value > 0)
-        {
-            return instance.volumeVOICE = value;
-        }
-        else
-        {
-            return instance.volumeVOICE = 0;
-        }
-    }
-
-    static public void SetDurationCrossBGM(float value)
-    {
-        instance.durationCrossBGM = value;
-    }
-
-
-
-    static public void SetNowScene(string name)
+    static public void SetNowScene(string name)         //現在のシーン
     {
         instance.nowScene = name;
     }
 
-    static public void SetIsSceneLoading(bool tf)
-    {
-        instance.isSceneLoading = tf;
-    }
-
-    static public void SetIsGame(bool tf)
-    {
-        instance.isGame = tf;
-    }
-
-    static public void SetBoostingReset1(bool tf)        ////コンボによるタイム増加のbool変数３コンボの場合の関数
-    {
-        instance.isBoosting1 = tf;
-    }
-
-    static public void SetBoostingReset2(bool tf)        ////コンボによるタイム増加のbool変数5コンボの場合の関数
-    {
-        instance.isBoosting2 = tf;
-    }
-
-    static public void SetIsTimeline(bool tf)
+    static public void SetIsTimeline(bool tf)           //タイムライン再生中か確認
     {
         instance.isTimeline = tf;
     }
 
-    static public void SetTotalItem(int value)
+    static public void SetTotalItem(int value)          //アイテム所持数
     {
         instance.Totalitem = value;
     }
 
-    static public void SetItemName(string value)
+    static public void SetItemName(string value)        //アイテム名
     {
         instance.ItemName = value;
     }
 
-    static public void SetItemDetailsName(string value)
+    static public void SetItemDetailsName(string value)         //アイデム詳細データ
     {
         instance.ItemDetailsName = value;
     }
 
-    static public void SetItemImage(Sprite value)
+    static public void SetItemImage(Sprite value)               //アイテムイメージ
     {
         instance.ItemImage = value;
     }
 
 
 
-    static public void SetPlayerMony(int value)
+    static public void SetPlayerMony(int value)                 //プレイヤーの所持金
     {
         instance.Playerhavemony = value;
     }
 
-    static public void SetItemDate(ItemData itemData)
-    {
-        instance.ShopItemDate = itemData;
-    }
-
-    static public void SetSignDate(SignDate signDate)
+    static public void SetSignDate(SignDate signDate)           //標識データ
     {
         instance.Signdate = signDate;
     }
@@ -360,7 +280,7 @@ public class GameManager : MonoBehaviour
         instance.PlayerStress = value;
     }
 
-    static public void SendPlusStress(float value)
+    static public void SendPlusStress(float value)          //ストレス値
     {
         instance.PlayerStress += value;
         PlayerStatus.Instance.currStress = instance.PlayerStress;
@@ -377,7 +297,7 @@ public class GameManager : MonoBehaviour
         instance.PlayerHydration = value;
     }
 
-    static public void SendPulusHydration(float value)
+    static public void SendPulusHydration(float value)      //プレイヤー水分量を足す
     {
         instance.PlayerHydration += value;
         PlayerStatus.Instance.currHyd = instance.PlayerHydration; // 値をPlayerStatusに反映
@@ -389,12 +309,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    static public void SendCSVTalk(string talknumber)
+    static public void SendCSVTalk(string talknumber)           //CSVから会話内容を送る
     {
         instance.TalkDate = talknumber;
     }
 
-    static public void SendCSVCharactorName(string NameNumber)
+    static public void SendCSVCharactorName(string NameNumber)      //CSVのキャラクターの名前を送る
     {
         instance.NameDate = NameNumber;
     }
