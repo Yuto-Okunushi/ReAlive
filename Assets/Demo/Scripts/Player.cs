@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] Canvas shopcanvs;
     [SerializeField] GameObject shopobject;
     [SerializeField] GameObject inventory;
+    [SerializeField] GameObject MapCam;
     //==================================================================================
 
     
@@ -79,6 +80,10 @@ public class Player : MonoBehaviour
             {
                 Jump();
             }
+        }
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+
         }
     }
 
@@ -178,5 +183,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+    public void OpenMap()
+    {
+        
+    }
 }
