@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad3c63d7a6e5bcd4083c2fbdec31bc4a, type: 3}
-  m_Name: Item5
+  m_Script: {fileID: 11500000, guid: d6fa2d92fc1b3f34da284357edf89c3b, type: 3}
+  m_Name: MapFlagFalse
   m_EditorClassIdentifier: 
-  itemName: "\u30AB\u30C3\u30D7\u30E9\u30FC\u30E1\u30F3"
-  price: 200
-  hp: 0
-  hydration: 0
-  food: 0
-  itemImage: {fileID: 21300000, guid: f44400144b481cc4c81d71cc7ca8d4ed, type: 3}

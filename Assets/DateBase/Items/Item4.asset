@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3c63d7a6e5bcd4083c2fbdec31bc4a, type: 3}
   m_Name: Item4
   m_EditorClassIdentifier: 
-  itemName: "\u30D8\u30EB\u30E1\u30C3\u30C8"
+  itemName: "\u30AB\u30C3\u30D7\u30E9\u30FC\u30E1\u30F3"
   price: 300
   hp: 0
   hydration: 0
