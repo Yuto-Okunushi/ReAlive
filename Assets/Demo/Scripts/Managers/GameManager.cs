@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
 
     public bool isOpend = false;        //インベントリが開かれているかのフラグ
 
+    public bool isMapShow = true;       // マップが表示可能かのフラグ
+
     private void Awake()
     {
         if (instance == null)
@@ -143,6 +145,11 @@ public class GameManager : MonoBehaviour
         return instance.isSceneLoading;
     }
 
+    static public bool GetIsMapShow()      //マップが開けるか
+    {
+        return instance.isMapShow;
+    }
+
     static public bool GetIsGame()          //操作中か確認
     {
         return instance.isGame;
@@ -221,6 +228,15 @@ public class GameManager : MonoBehaviour
         return instance.isOpend;
     }
     //===SETTER==========================================================================================================
+    static public bool SetIsOpend(bool value)       // インベントリが開かれているかどうか
+    {
+        return instance.isOpend = value;    
+    }
+
+    static public bool SetIsMapShow(bool value)       // マップが開かれているかどうか
+    {
+        return instance.isMapShow = value;
+    }
 
     static public bool SetIsTalking(bool value)         //会話イベント中かの判定
     {

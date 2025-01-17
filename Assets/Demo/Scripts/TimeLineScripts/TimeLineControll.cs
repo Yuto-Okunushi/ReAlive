@@ -8,15 +8,19 @@ public class TimeLineControll : MonoBehaviour
 {
     [SerializeField] public PlayableDirector[] Timelines;
 
-    //地震発生時間
+    // 地震発生時間
     public float earthquakeTime = 10.0f;
-    //時間経過
+    // 時間経過
     public float time = 0.0f;
 
-    //カウントをするかどうかの判断
+    // カウントをするかどうかの判断
     private bool isCount = true;
 
+    // TimeLine再生中か確認するフラグ
     public bool isTimeline = false;
+
+    // Map表示が可能かのフラグ
+    public bool isMapShow = true;
 
     public void Update()
     {
@@ -66,5 +70,11 @@ public class TimeLineControll : MonoBehaviour
     {
         isTimeline = false;
         GameManager.SetIsTimeline(isTimeline);
+    }
+
+    public void ShowMapFlag()       // マップ表示を無効にするフラグ
+    {
+        isMapShow = false;
+        GameManager.SetIsMapShow(isMapShow);        // GameManagerにフラグのデータを送信
     }
 }
