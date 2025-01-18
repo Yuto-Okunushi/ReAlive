@@ -48,11 +48,11 @@ public class PlayerCollision : MonoBehaviour
         }
         else if(other.gameObject.tag == "Goal1")     // ゴール１のオブジェクトに当たっている時
         {
-            SceneController.LoadNextScene("AnyScene");
+            TimeLineControll.StageClear();
         }
         else if (other.gameObject.tag == "Goal2")    // ゴール２のオブジェクトに当たっている時
         {
-            SceneController.LoadNextScene("AnyScene");
+            TimeLineControll.StageClear();
         }
 
     }
