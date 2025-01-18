@@ -42,6 +42,7 @@ public class TimeLineControll : MonoBehaviour
     public void FallRockTimeLine() => Timelines[1].Play();
     public void FlashBackTimeLine() => Timelines[2].Play();
     public void DeadTimeLine() => Timelines[3].Play();
+    public void StageClear() => Timelines[4].Play();        // ステージクリア時のタイムラインを再生する
 
     public void FlugTure()
     {
@@ -98,5 +99,10 @@ public class TimeLineControll : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);  // 指定秒数待機
         image.SetActive(false);                 // イメージを非表示
+    }
+
+    public void GoNextScene1()       // TimeLineでシーン遷移をさせるためのメソッド
+    {
+        SceneController.LoadNextScene("AnyScene");
     }
 }
