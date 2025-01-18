@@ -45,8 +45,16 @@ public class PlayerCollision : MonoBehaviour
             GameManager.SetIsTimeline(isTimeline);
             //タイムライン再生メソッドを呼び出す
             TimeLineControll.FallRockTimeLine();
-
         }
+        else if(other.gameObject.tag == "Goal1")     // ゴール１のオブジェクトに当たっている時
+        {
+            SceneController.LoadNextScene("AnyScene");
+        }
+        else if (other.gameObject.tag == "Goal2")    // ゴール２のオブジェクトに当たっている時
+        {
+            SceneController.LoadNextScene("AnyScene");
+        }
+
     }
 
     private void SendSignDate(int index)

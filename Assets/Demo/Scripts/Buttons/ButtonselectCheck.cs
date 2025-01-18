@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ButtonselectCheck : MonoBehaviour
 {
-
+    
     public void StartButtonCheck()
     {
         Debug.Log("スタートボタンが選択されました");

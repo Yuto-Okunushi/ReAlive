@@ -10,6 +10,7 @@ public class TalkEventController : MonoBehaviour
     [SerializeField] GameObject FirstTalk1;
     [SerializeField] GameObject FirstTalk2;
     [SerializeField] GameObject FirstTalk3;
+    [SerializeField] TimeLineControll timeLineControll;     // タイムラインコントローラーのメソッドを呼び出すため
 
     // 通知音
     [SerializeField] AudioClip noticeClip;
@@ -122,6 +123,7 @@ public class TalkEventController : MonoBehaviour
         else
         {
             Objectactivefalse();
+            timeLineControll.destination();     // 目的地のImageを表示するメソッド
         }
     }
 

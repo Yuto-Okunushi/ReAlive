@@ -10,6 +10,8 @@ TagManager:
   - Sign2
   - Sign3
   - GameOverObject1
+  - Goal1
+  - Goal2
   layers:
   - Default
   - TransparentFX

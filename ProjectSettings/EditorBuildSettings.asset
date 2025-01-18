@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Demo/Scenes/constructions/SignCheck.unity
     guid: b9fbd3a21089d3f4daf12b5dddd2cb5e
+  - enabled: 1
+    path: Assets/Demo/Scenes/StartScene.unity
+    guid: 5a3408ffd5bca6c43bfcdbedef49e9e0
+  - enabled: 1
+    path: "Assets/Demo/Scenes/\u03B2_DemoScene.unity"
+    guid: fba770d9b8fb0b941b59025c4ca71b25
   m_configObjects: {}
