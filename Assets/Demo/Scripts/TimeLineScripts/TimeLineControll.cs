@@ -9,7 +9,8 @@ public class TimeLineControll : MonoBehaviour
     public GameObject[] objectsToActivate; // ランダムで設定するオブジェクト群
 
 
-    [SerializeField] public PlayableDirector[] Timelines;
+    [SerializeField] public PlayableDirector[] Timelines;       // 通常のイベントで使われるタイムライン
+    [SerializeField] public PlayableDirector[] FlashBackTimelines;      // フラッシュバックの時に使うタイムライン
     [SerializeField] GameObject DistractionImage1;       // 目的地の通知をするイメージ
     [SerializeField] GameObject DistractionImage2;       // 目的地の通知をするイメージ
 
@@ -18,6 +19,7 @@ public class TimeLineControll : MonoBehaviour
     private bool isCount = true;
     public bool isTimeline = false;
     public bool isMapShow = true;
+    public int randomTimeLinenum;       // ランダムでタイムラインを再生させるための変数
 
     void Start()
     {
@@ -104,5 +106,11 @@ public class TimeLineControll : MonoBehaviour
     public void GoNextScene1()       // TimeLineでシーン遷移をさせるためのメソッド
     {
         SceneController.LoadNextScene("AnyScene");
+    }
+
+    public void RamdomFlashBackTimeLine()       // ランダムにフラッシュバックのタイムラインを再生させるメソッド
+    {
+        randomTimeLinenum = Random.Range(0,2);      // 0～2の数値をランダムに代入
+        FlashBackTimelines[randomTimeLinenum].Play();       // 代入した数値に対応したタイムラインを再生
     }
 }
