@@ -113,4 +113,10 @@ public class TimeLineControll : MonoBehaviour
         randomTimeLinenum = Random.Range(0,2);      // 0～2の数値をランダムに代入
         FlashBackTimelines[randomTimeLinenum].Play();       // 代入した数値に対応したタイムラインを再生
     }
+
+    public void StopEarthquakeTimer()
+    {
+        isCount = false; // タイマーを無効化
+    }
+
 }
