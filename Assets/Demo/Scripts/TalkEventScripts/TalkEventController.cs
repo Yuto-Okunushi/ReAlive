@@ -124,6 +124,9 @@ public class TalkEventController : MonoBehaviour
         {
             Objectactivefalse();
             timeLineControll.destination();     // 目的地のImageを表示するメソッド
+
+            // testのため追加
+            timeLineControll.RamdomFlashBackTimeLine();     // ランダムでフラッシュバックを再生
         }
     }
 
