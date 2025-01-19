@@ -1502,12 +1502,14 @@ MonoBehaviour:
   - {fileID: 522392146}
   - {fileID: 377992305}
   - {fileID: 1799408018}
+  FlashBackTimelines: []
   DistractionImage1: {fileID: 250700431}
   DistractionImage2: {fileID: 345883385}
   earthquakeTime: 10
   time: 0
   isTimeline: 0
   isMapShow: 1
+  randomTimeLinenum: 0
 --- !u!4 &159428177
 Transform:
   m_ObjectHideFlags: 0
