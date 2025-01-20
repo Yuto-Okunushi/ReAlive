@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonselectCheck : MonoBehaviour
 {
-    
+    // Playerスクリプトを参照
+    [SerializeField] Player playerScripts;
     public void StartButtonCheck()
     {
         Debug.Log("スタートボタンが選択されました");
@@ -31,6 +33,10 @@ public class ButtonselectCheck : MonoBehaviour
 
     public void GoGameOverScene()
     {
-        SceneController.LoadNextScene("GameOverScene");
+        //プレイヤーを初期位置に戻すメソッド
+        playerScripts.ResetPlayerPostion();
+        // Sceneを再ロード
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneController.LoadNextScene("GameOverScene");
     }
 }
