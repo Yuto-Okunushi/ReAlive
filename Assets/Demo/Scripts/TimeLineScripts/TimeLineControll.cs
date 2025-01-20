@@ -23,7 +23,7 @@ public class TimeLineControll : MonoBehaviour
 
     void Start()
     {
-        earthquakeTime = Random.Range(60.0f, 90.0f);
+        earthquakeTime = Random.Range(30.0f, 40.0f);
     }
 
     public void Update()
@@ -110,7 +110,7 @@ public class TimeLineControll : MonoBehaviour
 
     public void RamdomFlashBackTimeLine()       // ランダムにフラッシュバックのタイムラインを再生させるメソッド
     {
-        randomTimeLinenum = Random.Range(0,2);      // 0～2の数値をランダムに代入
+        randomTimeLinenum = Random.Range(0,3);      // 0～2の数値をランダムに代入
         FlashBackTimelines[randomTimeLinenum].Play();       // 代入した数値に対応したタイムラインを再生
     }
 

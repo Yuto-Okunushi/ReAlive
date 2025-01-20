@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject shopobject;
     [SerializeField] GameObject inventory;
     [SerializeField] GameObject MapCam;
+    public Vector3 initPosition;       // Playerの初期位置を保存する変数
     //==================================================================================
 
     
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
         // 初期速度を設定
         walkSpeed = baseWalkSpeed;
         runSpeed = baseRunSpeed;
+        initPosition = transform.position;      // 初期位置を保存
     }
 
     void Update()
@@ -181,6 +183,13 @@ public class Player : MonoBehaviour
                 Cursor.visible = false;
             }
         }
+    }
+
+    // プレイヤーを初期位置に戻す関数
+    public void ResetPlayerPostion()
+    {
+        transform.position = initPosition;      // 初期位置を代入
+        rb.velocity = Vector3.zero;             // 速度も０にする
     }
 
     public void OpenMap()
