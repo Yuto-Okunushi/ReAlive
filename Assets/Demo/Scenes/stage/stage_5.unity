@@ -4462,8 +4462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3aa3fb7435b07848938436d50e8bbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScripts: {fileID: 922123642}
-  playerStatus: {fileID: 922123644}
+  playerScripts: {fileID: 0}
+  playerStatus: {fileID: 0}
 --- !u!4 &536293762
 Transform:
   m_ObjectHideFlags: 0
@@ -8405,7 +8405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9db75a20b28269e498c45e00c94773bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7408a0ffce2234b4dbb0215fba674552, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9321,8 +9321,8 @@ GameObject:
   - component: {fileID: 922123639}
   - component: {fileID: 922123643}
   - component: {fileID: 922123638}
-  - component: {fileID: 922123642}
-  - component: {fileID: 922123644}
+  - component: {fileID: 922123650}
+  - component: {fileID: 922123649}
   - component: {fileID: 922123645}
   - component: {fileID: 922123646}
   - component: {fileID: 922123647}
@@ -9417,32 +9417,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &922123642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922123637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728668850c2bbca49a1fe3df4edcb379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseWalkSpeed: 5
-  baseRunSpeed: 10
-  playerCam: {fileID: 598559413}
-  walkSpeed: 5
-  runSpeed: 10
-  jumpForce: 5
-  isOpend: 0
-  isTimeline: 0
-  isTalking: 0
-  shopcanvs: {fileID: 1685751557}
-  shopobject: {fileID: 1688035412748891953}
-  inventory: {fileID: 618489192}
-  MapCam: {fileID: 1318268606}
-  initPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &922123643
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9459,31 +9433,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &922123644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922123637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 131c90069a9f31046bd63a59f88ded18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHydration: 100
-  maxStress: 100
-  currHyd: 0
-  currStress: 0
-  hydRatePerUnit: 0.008
-  stressRatePerUnit: 0.1
-  hydrationGauge: {fileID: 2014627233}
-  stressGauge: {fileID: 1384266162}
-  playerinitialmony: 3000
-  playerHaveItem: 0
-  playerMaxHaveItem: 5
-  talkEventController: {fileID: 1162205026}
-  timeLineControll: {fileID: 2060129512}
 --- !u!114 &922123645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9623,6 +9572,56 @@ MonoBehaviour:
   PlayerMapPin: {fileID: 1933462979}
   isMapOpen: 0
   isMapShow: 1
+--- !u!114 &922123649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922123637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e9ec1df2c833d43a1700482a6a8d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHydration: 100
+  maxStress: 100
+  currHyd: 0
+  currStress: 0
+  hydRatePerUnit: 0.008
+  stressRatePerUnit: 0.1
+  hydrationGauge: {fileID: 2014627233}
+  stressGauge: {fileID: 1384266162}
+  playerinitialmony: 3000
+  playerHaveItem: 0
+  playerMaxHaveItem: 5
+  talkEventController: {fileID: 1162205026}
+  timeLineControll: {fileID: 2060129512}
+--- !u!114 &922123650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922123637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32e5b40977f492429560d6bb0b3f242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseWalkSpeed: 5
+  baseRunSpeed: 10
+  playerCam: {fileID: 598559413}
+  walkSpeed: 5
+  runSpeed: 10
+  jumpForce: 5
+  isOpend: 0
+  isTimeline: 0
+  isTalking: 0
+  shopcanvs: {fileID: 1685751557}
+  shopobject: {fileID: 1688035412748891953}
+  inventory: {fileID: 618489192}
+  MapCam: {fileID: 1318268606}
 --- !u!4 &923294039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7930180210249525580, guid: 6a6380fd232de4b4691bf28ad68d42a7, type: 3}
@@ -15114,7 +15113,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec57dd1c96e42774988728cb67765efa, type: 2}
   - {fileID: 11400000, guid: 57d05342412d70142833085c5da2ec66, type: 2}
   - {fileID: 11400000, guid: 935b03f9a93c8994083626bfac5e02d8, type: 2}
-  - {fileID: 11400000, guid: 935b03f9a93c8994083626bfac5e02d8, type: 2}
+  - {fileID: 11400000, guid: a51bdf84159669d4480c9483ce83c2a3, type: 2}
   SignPanel: {fileID: 942010724}
   displayDuration: 3
   TimeLineControll: {fileID: 2060129512}

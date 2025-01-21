@@ -12141,6 +12141,8 @@ MonoBehaviour:
   TalkEventPanel: {fileID: 644495045}
   EventText: {fileID: 1275409382}
   CharactorNameText: {fileID: 971855081}
+  EndingCanvas: {fileID: 0}
+  EndingText: {fileID: 0}
   isTalking: 0
   CharactorNameNumber: 2
   TalkEventName: 5
@@ -14854,7 +14856,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec57dd1c96e42774988728cb67765efa, type: 2}
   - {fileID: 11400000, guid: 57d05342412d70142833085c5da2ec66, type: 2}
   - {fileID: 11400000, guid: 935b03f9a93c8994083626bfac5e02d8, type: 2}
-  - {fileID: 11400000, guid: 935b03f9a93c8994083626bfac5e02d8, type: 2}
+  - {fileID: 11400000, guid: a51bdf84159669d4480c9483ce83c2a3, type: 2}
   SignPanel: {fileID: 942010724}
   displayDuration: 3
   TimeLineControll: {fileID: 2060129512}

@@ -8227,7 +8227,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9db75a20b28269e498c45e00c94773bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa265c1ede2aba94e949a9d6302b323d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12141,6 +12141,8 @@ MonoBehaviour:
   TalkEventPanel: {fileID: 644495045}
   EventText: {fileID: 1275409382}
   CharactorNameText: {fileID: 971855081}
+  EndingCanvas: {fileID: 0}
+  EndingText: {fileID: 0}
   isTalking: 0
   CharactorNameNumber: 2
   TalkEventName: 5

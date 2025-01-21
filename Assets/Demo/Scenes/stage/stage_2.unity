@@ -12299,6 +12299,8 @@ MonoBehaviour:
   TalkEventPanel: {fileID: 644495045}
   EventText: {fileID: 1275409382}
   CharactorNameText: {fileID: 971855081}
+  EndingCanvas: {fileID: 0}
+  EndingText: {fileID: 0}
   isTalking: 0
   CharactorNameNumber: 2
   TalkEventName: 5
@@ -14974,7 +14976,6 @@ GameObject:
   - component: {fileID: 1473063527}
   - component: {fileID: 1473063529}
   - component: {fileID: 1473063530}
-  - component: {fileID: 1473063528}
   m_Layer: 0
   m_Name: CollisionCheck
   m_TagString: Untagged
@@ -14997,29 +14998,6 @@ Transform:
   m_Father: {fileID: 922123641}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1473063528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473063526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6043319fc40cc0d48ae3af456f648a11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signDate:
-  - {fileID: 11400000, guid: ec57dd1c96e42774988728cb67765efa, type: 2}
-  - {fileID: 11400000, guid: 57d05342412d70142833085c5da2ec66, type: 2}
-  - {fileID: 11400000, guid: 935b03f9a93c8994083626bfac5e02d8, type: 2}
-  - {fileID: 11400000, guid: 935b03f9a93c8994083626bfac5e02d8, type: 2}
-  SignPanel: {fileID: 942010724}
-  displayDuration: 3
-  TimeLineControll: {fileID: 2060129512}
-  isOpend: 0
-  isTimeline: 0
-  isTalking: 0
 --- !u!136 &1473063529
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -15047,10 +15025,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signDate:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ec57dd1c96e42774988728cb67765efa, type: 2}
+  - {fileID: 11400000, guid: 57d05342412d70142833085c5da2ec66, type: 2}
+  - {fileID: 11400000, guid: 935b03f9a93c8994083626bfac5e02d8, type: 2}
+  - {fileID: 11400000, guid: a51bdf84159669d4480c9483ce83c2a3, type: 2}
   SignPanel: {fileID: 942010724}
   displayDuration: 3
   TimeLineControll: {fileID: 2060129512}
