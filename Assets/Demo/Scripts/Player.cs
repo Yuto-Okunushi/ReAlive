@@ -89,10 +89,6 @@ public class Player : MonoBehaviour
                 Jump();
             }
         }
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-
-        }
     }
 
     // ³‹K‰»‚³‚ê‚½ƒvƒŒƒCƒ„[ˆÚ“®‚ÌŠÖ”
