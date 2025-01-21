@@ -105,7 +105,7 @@ public class TimeLineControll : MonoBehaviour
 
     public void GoNextScene1()       // TimeLineでシーン遷移をさせるためのメソッド
     {
-        SceneController.LoadNextScene("AnyScene");
+        SceneController.LoadNextScene("stage_2");
     }
 
     public void RamdomFlashBackTimeLine()       // ランダムにフラッシュバックのタイムラインを再生させるメソッド
