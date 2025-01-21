@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 // ステージ2専用
 
@@ -34,15 +33,27 @@ public class PlayerCollision_2 : MonoBehaviour
     {
         if (other.gameObject.tag == "Sign1")
         {
-            CollectSign(0);
+            Debug.Log("標識1にぶつかりました");
+            SendSignDate(0);
+            StartCoroutine(DisplaySignPanel());
         }
         else if (other.gameObject.tag == "Sign2")
         {
-            CollectSign(1);
+            Debug.Log("標識2にぶつかりました");
+            SendSignDate(1);
+            StartCoroutine(DisplaySignPanel());
         }
         else if (other.gameObject.tag == "Sign3")
         {
-            CollectSign(2);
+            Debug.Log("標識3にぶつかりました");
+            SendSignDate(2);
+            StartCoroutine(DisplaySignPanel());
+        }
+        else if (other.gameObject.tag == "Sign4")
+        {
+            Debug.Log("標識4にぶつかりました");
+            SendSignDate(3);
+            StartCoroutine(DisplaySignPanel());
         }
         else if (other.gameObject.tag == "GameOverObject1")
         {
