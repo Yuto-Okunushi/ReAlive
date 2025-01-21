@@ -19538,8 +19538,8 @@ MonoBehaviour:
   - {fileID: 669896923}
   - {fileID: 126619746}
   - {fileID: 1303026418}
-  DistractionImage1: {fileID: 1321924416}
-  DistractionImage2: {fileID: 1041066098}
+  DistractionImage1: {fileID: 1041066098}
+  DistractionImage2: {fileID: 1321924416}
   earthquakeTime: 10
   time: 0
   isTimeline: 0

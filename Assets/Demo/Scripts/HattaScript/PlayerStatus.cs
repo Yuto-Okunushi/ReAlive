@@ -36,24 +36,11 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] TimeLineControll timeLineControll;         // TimelineControll参照
     //=====================================================================================
 
-    void Awake()
-    {
-        // シングルトンの設定
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 
     void Start()
     {
         // 初期化
-        player = Player.Instance;
         currHyd = maxHydration;
         currStress = maxStress;
         lastPos = player.transform.position;
