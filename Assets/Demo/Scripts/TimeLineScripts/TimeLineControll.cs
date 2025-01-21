@@ -81,13 +81,13 @@ public class TimeLineControll : MonoBehaviour
         {
             DistractionImage1.SetActive(true);
             DistractionImage2.SetActive(false);
-            StartCoroutine(HideImageAfterDelay(DistractionImage1, 2.0f));
+            StartCoroutine(HideImageAfterDelay(DistractionImage1, 6.0f));
         }
         else if (randomIndex == 1)
         {
             DistractionImage1.SetActive(false);
             DistractionImage2.SetActive(true);
-            StartCoroutine(HideImageAfterDelay(DistractionImage2, 2.0f));
+            StartCoroutine(HideImageAfterDelay(DistractionImage2, 6.0f));
         }
         else
         {
