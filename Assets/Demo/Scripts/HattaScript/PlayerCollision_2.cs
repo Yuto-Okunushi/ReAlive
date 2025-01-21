@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using static System.Net.Mime.MediaTypeNames;
 
+// ステージ2専用
+
 public class PlayerCollision_2 : MonoBehaviour
 {
     [SerializeField] SignDate[] signDate;
