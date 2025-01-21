@@ -52,6 +52,12 @@ public class PlayerCollision_3 : MonoBehaviour
             SendSignDate(2);
             StartCoroutine(DisplaySignPanel());
         }
+        else if (other.gameObject.tag == "Sign4")
+        {
+            Debug.Log("•WŽ¯4‚É‚Ô‚Â‚©‚è‚Ü‚µ‚½");
+            SendSignDate(3);
+            StartCoroutine(DisplaySignPanel());
+        }
         else if (other.gameObject.tag == "GameOverObject1")
         {
             isTimeline = true;
