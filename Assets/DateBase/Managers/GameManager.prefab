@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6257822446164340802}
+  - component: {fileID: 4023568107020985436}
   - component: {fileID: 2051580673680424532}
   m_Layer: 0
   m_Name: GameManager
@@ -32,6 +33,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4023568107020985436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285754050052006378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b5868a437b4a646a38e685934f3046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startupImage: {fileID: 0}
+  displayTime: 3
 --- !u!114 &2051580673680424532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,107 +59,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b026e31cbd9991944a1dbf7eb570c67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test: 0
+  PlusTest: 0
   volumeBGM: 0
   volumeSE: 0
   volumeVOICE: 0
   durationCrossBGM: 0
-  taTotalScore: 00000000000000000000000000000000
-  taSumScore: 0
-  trSecondSumTime: 0
-  trMinuteSumTime: 0
-  trHourSumTIme: 0
-  trAverage: 0
-  trCount: 0
-  trPlayCount: 0
-  sumCombo: 0
   nowScene: 
   isSceneLoading: 0
   isGame: 0
   isBoosting1: 0
   isBoosting2: 0
-  KatakanaArray:
-  - "\u30A2"
-  - "\u30A4"
-  - "\u30A6"
-  - "\u30A8"
-  - "\u30AA"
-  - "\u30AB"
-  - "\u30AD"
-  - "\u30AF"
-  - "\u30B1"
-  - "\u30B3"
-  - "\u30B5"
-  - "\u30B7"
-  - "\u30B9"
-  - "\u30BB"
-  - "\u30BD"
-  - "\u30BF"
-  - "\u30C1"
-  - "\u30C4"
-  - "\u30C6"
-  - "\u30C8"
-  - "\u30CA"
-  - "\u30CB"
-  - "\u30CC"
-  - "\u30CD"
-  - "\u30CE"
-  - "\u30CF"
-  - "\u30D2"
-  - "\u30D5"
-  - "\u30D8"
-  - "\u30DB"
-  - "\u30DE"
-  - "\u30DF"
-  - "\u30E0"
-  - "\u30E1"
-  - "\u30E2"
-  - "\u30E4"
-  - "\u30E6"
-  - "\u30E8"
-  - "\u30E9"
-  - "\u30EA"
-  - "\u30EB"
-  - "\u30EC"
-  - "\u30ED"
-  - "\u30EF"
-  - "\u30F0"
-  - "\u30F1"
-  - "\u30F2"
-  - "\u30F3"
-  - "\u30FC"
-  - "\u30AC"
-  - "\u30AE"
-  - "\u30B0"
-  - "\u30B2"
-  - "\u30B4"
-  - "\u30B6"
-  - "\u30B8"
-  - "\u30BA"
-  - "\u30BC"
-  - "\u30BE"
-  - "\u30C0"
-  - "\u30C2"
-  - "\u30C5"
-  - "\u30C7"
-  - "\u30C9"
-  - "\u30D0"
-  - "\u30D3"
-  - "\u30D6"
-  - "\u30D9"
-  - "\u30DC"
-  - "\u30F4"
-  - "\u30D1"
-  - "\u30D4"
-  - "\u30D7"
-  - "\u30DA"
-  - "\u30DD"
-  - "\u30A1"
-  - "\u30A3"
-  - "\u30A5"
-  - "\u30A7"
-  - "\u30A9"
-  - "\u30E3"
-  - "\u30E5"
-  - "\u30E7"
-  - "\u30EE"
-  - "\u30C3"
+  Totalitem: 0
+  ItemName: 
+  ItemDetailsName: 
+  ItemImage: {fileID: 0}
+  ShopItemDate: {fileID: 0}
+  Signdate: {fileID: 0}
+  Playerhavemony: 0
+  PlayerHp: 0
+  PlayerStress: 0
+  PlayerHydration: 0
+  maxHydration: 100
+  maxStress: 100
+  isTimeline: 0
+  TalkDate: 
+  NameDate: 
+  isTalking: 0
+  isOpend: 0
+  isMapShow: 1
