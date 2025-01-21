@@ -4308,9 +4308,9 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
-          m_MethodName: GoNextScene1
+        - m_Target: {fileID: 536293761}
+          m_TargetAssemblyTypeName: ButtonselectCheck, Assembly-CSharp
+          m_MethodName: GoNextScen2
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

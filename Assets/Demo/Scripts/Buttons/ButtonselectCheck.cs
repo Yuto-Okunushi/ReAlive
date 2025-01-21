@@ -24,13 +24,26 @@ public class ButtonselectCheck : MonoBehaviour
     public void TitleButtonCheck()
     {
         Debug.Log("タイトルボタンが押されました");
-        SceneController.LoadNextScene("Demo_Title");
+        SceneController.LoadNextScene("StartScene");
     }
 
     public void EndButtonCheck()
     {
         Debug.Log("エンドボタンが選択されました");
         Application.Quit();
+    }
+
+    public void GoNextScen2()       // TimeLineでシーン遷移をさせるためのメソッド
+    {
+        SceneController.LoadNextScene("stage_3");
+    }
+    public void GoNextScene3()       // TimeLineでシーン遷移をさせるためのメソッド
+    {
+        SceneController.LoadNextScene("stage_4");
+    }
+    public void GoNextScene4()       // TimeLineでシーン遷移をさせるためのメソッド
+    {
+        SceneController.LoadNextScene("stage_5");
     }
 
     public void GoGameOverScene()

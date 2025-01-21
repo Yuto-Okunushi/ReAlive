@@ -60,7 +60,10 @@ public class PlayerCollision : MonoBehaviour
         {
             TimeLineControll.StageClear();
         }
-
+        else if (other.gameObject.tag == "CompleteObject")      // ゲームクリア時に再生するタイムライン
+        {
+            TimeLineControll.PerfectClear();
+        }
     }
 
     private void SendSignDate(int index)

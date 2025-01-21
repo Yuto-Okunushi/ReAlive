@@ -4228,7 +4228,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2060129512}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
-          m_MethodName: GoNextScene1
+          m_MethodName: GoNextScene3
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
