@@ -26,6 +26,11 @@ public class TimeLineControll_2 : MonoBehaviour
     void Start()
     {
         earthquakeTime = Random.Range(30.0f, 40.0f);
+        // 特定の場所をすべて非アクティブ化
+        foreach (var location in specificLocations)
+        {
+            location.SetActive(false);
+        }
     }
 
     public void Update()
@@ -42,7 +47,13 @@ public class TimeLineControll_2 : MonoBehaviour
         }
     }
 
-    public void EarthquakeTimeline() => Timelines[0].Play();
+    public void EarthquakeTimeline()
+    {
+        Timelines[0].Play();
+
+        // 地震発生後に特定の場所をアクティブ化
+        ActivateSpecificLocation(0); // 必要に応じて適切なインデックスを設定
+    }
     public void FallRockTimeLine() => Timelines[1].Play();
     public void FlashBackTimeLine() => Timelines[2].Play();
     public void DeadTimeLine() => Timelines[3].Play();
