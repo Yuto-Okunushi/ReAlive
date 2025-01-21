@@ -23,6 +23,8 @@ public class TalkEventController : MonoBehaviour
     [SerializeField] GameObject TalkEventPanel;
     [SerializeField] Text EventText;
     [SerializeField] Text CharactorNameText;
+    [SerializeField] GameObject EndingCanvas;
+    [SerializeField] Text EndingText;
 
     // 現在の会話内容とキャラクター名
     string NowTalk;
@@ -174,5 +176,40 @@ public class TalkEventController : MonoBehaviour
         isCoroutineRunning = true;
         yield return new WaitForSeconds(1f);
         isCoroutineRunning = false;
+    }
+
+    public void EndingTalkEvent()
+    {
+        EndingCanvas.SetActive(true);
+        // 現在の行番号と列番号（固定で10列目を使用）
+        int currentRow = 5;
+        int columnIndex = 9; // 10列目（0始まりなので9）
+
+        // Endingイベントを開始
+        StartCoroutine(EndingEventCoroutine(currentRow, columnIndex));
+    }
+
+    private IEnumerator EndingEventCoroutine(int startRow, int columnIndex)
+    {
+        int rowCount = csvData.Count; // CSVの行数を取得
+        Objectactivetrue(); // 会話イベント用UIを表示
+
+        for (int row = startRow; row < rowCount; row++)
+        {
+            // CSVデータが空でないか確認
+            if (columnIndex < csvData[row].Length && !string.IsNullOrEmpty(csvData[row][columnIndex]))
+            {
+                // 現在の行の 10 列目の内容を取得
+                NowTalk = csvData[row][columnIndex];
+                EventText.text = NowTalk; // UIに反映
+
+                // ユーザーの入力待ち
+                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0));
+            }
+            else
+            {
+                SceneController.LoadNextScene("StartScene");
+            }
+        }
     }
 }

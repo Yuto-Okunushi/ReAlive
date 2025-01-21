@@ -14,6 +14,7 @@ TagManager:
   - Goal2
   - Fire
   - Sign4
+  - CompleteObject
   layers:
   - Default
   - TransparentFX
