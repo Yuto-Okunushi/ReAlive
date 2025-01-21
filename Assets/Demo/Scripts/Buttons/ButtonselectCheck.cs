@@ -7,6 +7,8 @@ public class ButtonselectCheck : MonoBehaviour
 {
     // Playerスクリプトを参照
     [SerializeField] Player playerScripts;
+    // PlayerStatusスクリプト参照
+    [SerializeField] PlayerStatus playerStatus;
     public void StartButtonCheck()
     {
         Debug.Log("スタートボタンが選択されました");
@@ -35,8 +37,7 @@ public class ButtonselectCheck : MonoBehaviour
     {
         //プレイヤーを初期位置に戻すメソッド
         playerScripts.ResetPlayerPostion();
-        // Sceneを再ロード
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //SceneController.LoadNextScene("GameOverScene");
+        // プレイヤーのステータスを初期に戻して、最初の通知を飛ばすシステム
+        playerStatus.ResetPlayerStates();
     }
 }

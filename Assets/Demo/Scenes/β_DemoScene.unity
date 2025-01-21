@@ -4013,6 +4013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScripts: {fileID: 922123642}
+  playerStatus: {fileID: 922123644}
 --- !u!4 &536293762
 Transform:
   m_ObjectHideFlags: 0
@@ -8823,7 +8824,7 @@ MonoBehaviour:
   shopcanvs: {fileID: 1685751557}
   shopobject: {fileID: 1688035412748891953}
   inventory: {fileID: 618489192}
-  MapCam: {fileID: 0}
+  MapCam: {fileID: 1318268606}
   initPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &922123643
 Rigidbody:
@@ -8864,6 +8865,8 @@ MonoBehaviour:
   playerinitialmony: 3000
   playerHaveItem: 0
   playerMaxHaveItem: 5
+  talkEventController: {fileID: 1162205026}
+  timeLineControll: {fileID: 2060129512}
 --- !u!114 &922123645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8999,8 +9002,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8211f81de6364db4891e2274200fbe07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MapCam: {fileID: 0}
-  PlayerMapPin: {fileID: 0}
+  MapCam: {fileID: 1318268606}
+  PlayerMapPin: {fileID: 1933462979}
   isMapOpen: 0
   isMapShow: 1
 --- !u!4 &923294039 stripped
@@ -12699,7 +12702,7 @@ GameObject:
   - component: {fileID: 1318268608}
   - component: {fileID: 1318268607}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: MapCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

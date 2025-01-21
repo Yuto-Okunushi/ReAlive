@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     public Vector3 initPosition;       // Playerの初期位置を保存する変数
     //==================================================================================
 
-    
+
 
     void Awake()
     {
@@ -37,7 +37,13 @@ public class Player : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // ゲームオブジェクトがシーン間で破棄されないようにする
+            DontDestroyOnLoad(gameObject); // プレイヤーオブジェクトを破棄しないよう設定
+
+            // 子オブジェクトも全てDontDestroyOnLoadに設定
+            foreach (Transform child in GetComponentsInChildren<Transform>(true))
+            {
+                DontDestroyOnLoad(child.gameObject);
+            }
         }
         else
         {
@@ -190,10 +196,5 @@ public class Player : MonoBehaviour
     {
         transform.position = initPosition;      // 初期位置を代入
         rb.velocity = Vector3.zero;             // 速度も０にする
-    }
-
-    public void OpenMap()
-    {
-        
     }
 }

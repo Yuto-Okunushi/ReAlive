@@ -119,4 +119,10 @@ public class TimeLineControll : MonoBehaviour
         isCount = false; // タイマーを無効化
     }
 
+    public void EarthQuakeTimeReset()
+    {
+        earthquakeTime = Random.Range(30.0f, 40.0f);        // ランダムでもう一度時間を設定
+        time = 0;                                           // 計測の時間を0に戻してまたカウントを始める
+    }
+
 }
