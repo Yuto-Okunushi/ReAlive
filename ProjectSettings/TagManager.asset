@@ -12,6 +12,8 @@ TagManager:
   - GameOverObject1
   - Goal1
   - Goal2
+  - Fire
+  - Sign4
   layers:
   - Default
   - TransparentFX
