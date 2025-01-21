@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// ステージ5専用
+
 public class Player_2 : MonoBehaviour
 {
     public static Player_2 Instance { get; private set; } // シングルトンのインスタンス
