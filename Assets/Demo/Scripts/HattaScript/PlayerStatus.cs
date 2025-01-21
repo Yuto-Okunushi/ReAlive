@@ -32,6 +32,8 @@ public class PlayerStatus : MonoBehaviour
     public int playerinitialmony = 3000;        //プレイヤーの所持金
     public int playerHaveItem = 0;          //現在のプレイヤーアイテム所持数
     public int playerMaxHaveItem = 5;       //限界所持数
+    [SerializeField] TalkEventController talkEventController;        // 会話システム参照
+    [SerializeField] TimeLineControll timeLineControll;         // TimelineControll参照
     //=====================================================================================
 
     void Awake()
@@ -187,5 +189,23 @@ public class PlayerStatus : MonoBehaviour
         stressGauge.fillAmount = currStress / maxStress;
         GameManager.SetPlayerStress(currStress);
 
+    }
+
+    //プレイヤー状態を初期値に戻すメソッド
+    public void ResetPlayerStates()
+    {
+        Debug.Log("このスクリプトは実行されてるよ！");
+        // 水分量
+        currHyd = maxHydration;
+        // ストレス値
+        currStress = maxStress;
+        // 所持金
+        playerinitialmony = 3000;
+        // 現在のプレイヤーアイテム所持数
+        playerHaveItem = 0;
+        // ゲームの最初に働通知が来るシステムを再生
+        talkEventController.notice();
+        //地震が起きる時間をリセット
+        timeLineControll.EarthQuakeTimeReset();
     }
 }

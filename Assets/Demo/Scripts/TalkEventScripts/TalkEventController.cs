@@ -133,6 +133,7 @@ public class TalkEventController : MonoBehaviour
         {
             audioSource.Play();
             isNoticeActive = true;
+            talkStep = 0;       // ‰ï˜b‚Ìisó‹µ‚ğ0‚É–ß‚·
         }
     }
 
