@@ -53,7 +53,6 @@ public class PlayerStatus_2 : MonoBehaviour
     void Start()
     {
         // ‰Šú‰»
-        player_2 = Player_2.Instance;
         currHyd = maxHydration;
         currStress = maxStress;
         lastPos = player_2.transform.position;

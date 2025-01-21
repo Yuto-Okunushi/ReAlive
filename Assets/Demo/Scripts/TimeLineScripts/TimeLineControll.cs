@@ -45,6 +45,7 @@ public class TimeLineControll : MonoBehaviour
     public void FlashBackTimeLine() => Timelines[2].Play();
     public void DeadTimeLine() => Timelines[3].Play();
     public void StageClear() => Timelines[4].Play();        // ステージクリア時のタイムラインを再生する
+    public void PerfectClear() => Timelines[5].Play();        // ステージクリア時のタイムラインを再生する
 
     public void FlugTure()
     {
@@ -106,6 +107,18 @@ public class TimeLineControll : MonoBehaviour
     public void GoNextScene1()       // TimeLineでシーン遷移をさせるためのメソッド
     {
         SceneController.LoadNextScene("stage_2");
+    }
+    public void GoNextScen2()       // TimeLineでシーン遷移をさせるためのメソッド
+    {
+        SceneController.LoadNextScene("stage_3");
+    }
+    public void GoNextScene3()       // TimeLineでシーン遷移をさせるためのメソッド
+    {
+        SceneController.LoadNextScene("stage_4");
+    }
+    public void GoNextScene4()       // TimeLineでシーン遷移をさせるためのメソッド
+    {
+        SceneController.LoadNextScene("stage_5");
     }
 
     public void RamdomFlashBackTimeLine()       // ランダムにフラッシュバックのタイムラインを再生させるメソッド

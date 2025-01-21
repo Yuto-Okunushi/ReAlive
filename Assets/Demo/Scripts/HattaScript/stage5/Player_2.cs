@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Player_2 : MonoBehaviour
 {
-    public static Player_2 Instance { get; private set; } // シングルトンのインスタンス
 
     public float baseWalkSpeed = 5f;  // 通常の移動速度
     public float baseRunSpeed = 10f;  // 走る時の移動速度
@@ -34,16 +33,6 @@ public class Player_2 : MonoBehaviour
 
     void Awake()
     {
-        // シングルトンのインスタンスを設定
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // ゲームオブジェクトがシーン間で破棄されないようにする
-        }
-        else
-        {
-            Destroy(gameObject); // 既にインスタンスが存在する場合はこのオブジェクトを破棄
-        }
 
         rb = GetComponent<Rigidbody>(); // Rigidbodyコンポーネントを取得
     }
