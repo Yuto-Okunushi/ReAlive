@@ -9304,10 +9304,10 @@ PlayableDirector:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942152659}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: f8b33394d44fd0145af0a969dded19e0, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -9334,16 +9334,32 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 2b45550a9f23db64f8d2870396c8b0b6, type: 2}
     - {fileID: 11400000, guid: 431f936a0fac58b49b7de3cceef0e42f, type: 2}
+    - {fileID: 11400000, guid: 89f71e6e2c71e424f9ba9b52f139c5de, type: 2}
+    - {fileID: 11400000, guid: a253beef80989fc41b35f5f59e13034f, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 942152659}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: 
+        - m_Target: {fileID: 536293761}
+          m_TargetAssemblyTypeName: ButtonselectCheck, Assembly-CSharp
+          m_MethodName: GoGameOverScene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2060129512}
+          m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
+          m_MethodName: FlugFalse
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -9438,7 +9454,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tunami_1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+  m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 895c5bd3ffdecf8458269e2233ff51e1, type: 3}
 --- !u!4 &944368245 stripped
 Transform:
@@ -18731,7 +18747,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051250884}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -18894,9 +18910,9 @@ MonoBehaviour:
   - {fileID: 1231624525}
   Timelines:
   - {fileID: 1983783703}
+  - {fileID: 942152661}
   - {fileID: 337482206}
   - {fileID: 669896923}
-  - {fileID: 942152661}
   - {fileID: 527785781}
   FlashBackTimelines:
   - {fileID: 669896923}
