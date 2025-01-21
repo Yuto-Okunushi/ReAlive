@@ -143,6 +143,11 @@ public class TalkEventController : MonoBehaviour
         talkStep++;
         switch (talkStep)
         {
+            case 1:
+                StartSmartPhoneUI.SetBool("IsStarted", true); // アニメーションを開始
+                StartSmartPhoneUI.SetBool("IsClosed", false);
+
+                break;
             case 2:
                 FirstTalk1.SetActive(true);
                 StartCoroutine(ActivateFirstTalk2());
@@ -156,6 +161,10 @@ public class TalkEventController : MonoBehaviour
             case 5:
                 StartSmartPhoneUI.SetBool("IsStarted", false);
                 StartSmartPhoneUI.SetBool("IsClosed", true);
+                // もう一度一から会話を始められるようもとに戻す
+                FirstTalk1.SetActive(false);
+                FirstTalk2.SetActive(false);
+                FirstTalk3.SetActive(false);
                 break;
         }
     }
