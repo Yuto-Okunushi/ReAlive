@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019d7f4310e37ed4497ef936da03d701, type: 3}
   m_Name: Sign3
   m_EditorClassIdentifier: 
-  signName: "\u6D25\u6CE2\u6CE8\u610F"
+  signName: 
   signNumber: 2
-  signDetaile: "\u6D25\u6CE2\u304C\u8D77\u304D\u308B\u6050\u308C\u304C\u3042\u308B\u5834\u6240\u306B\u8A2D\u7F6E\u3055\u308C\u308B\u6A19\u8B58"
-  signImage: {fileID: 21300000, guid: 17f13115d6a8b034caeab5018bce6a42, type: 3}
+  signDetaile: 
+  signImage: {fileID: 21300000, guid: affd7493f2593d4468f03983cb08de62, type: 3}
