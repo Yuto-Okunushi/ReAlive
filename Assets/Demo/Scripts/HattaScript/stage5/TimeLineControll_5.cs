@@ -40,7 +40,15 @@ public class TimeLineControll_5 : MonoBehaviour
         }
     }
 
-    public void EarthquakeTimeline() => Timelines[0].Play();
+    public void EarthquakeTimeline()
+    {
+        // 地震イベントのタイムラインを再生
+        Timelines[0].Play();
+
+        // 地震イベント後に目的地をランダムに設定
+        destination();
+    }
+
     public void FallRockTimeLine() => Timelines[1].Play();
     public void FlashBackTimeLine() => Timelines[2].Play();
     public void DeadTimeLine() => Timelines[3].Play();

@@ -1164,7 +1164,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugFalse
           m_Mode: 1
@@ -1178,7 +1178,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugTure
           m_Mode: 1
@@ -3020,7 +3020,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugFalse
           m_Mode: 1
@@ -3034,7 +3034,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: RamdomFlashBackTimeLine
           m_Mode: 1
@@ -4226,7 +4226,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: GoNextScene3
           m_Mode: 1
@@ -6028,7 +6028,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugFalse
           m_Mode: 1
@@ -6044,7 +6044,7 @@ MonoBehaviour:
         m_Calls: []
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugTure
           m_Mode: 1
@@ -8388,7 +8388,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4023568107020985436, guid: f75dd59a75ddfa64db91b71462051008, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f75dd59a75ddfa64db91b71462051008, type: 3}
 --- !u!1 &889247777
 GameObject:
@@ -9304,8 +9305,8 @@ MonoBehaviour:
   playerinitialmony: 3000
   playerHaveItem: 0
   playerMaxHaveItem: 5
-  talkEventController: {fileID: 1162205026}
-  timeLineControll: {fileID: 2060129512}
+  talkEventController: {fileID: 0}
+  timeLineControll: {fileID: 0}
 --- !u!114 &922123645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9361,7 +9362,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1162205026}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TalkEventController, Assembly-CSharp
           m_MethodName: Objectactivetrue
           m_Mode: 1
@@ -9375,7 +9376,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1162205026}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TalkEventController, Assembly-CSharp
           m_MethodName: SelectEvent1
           m_Mode: 1
@@ -9389,7 +9390,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugTure
           m_Mode: 1
@@ -9403,7 +9404,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugFalse
           m_Mode: 1
@@ -9601,7 +9602,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugFalse
           m_Mode: 1
@@ -9615,7 +9616,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugTure
           m_Mode: 1
@@ -12129,13 +12130,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1162205024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98d79c98b069be4c99fe06d26f24d5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cf44f68def048644886b42a64e1dac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FirstTalk1: {fileID: 1233162335}
   FirstTalk2: {fileID: 896577538}
   FirstTalk3: {fileID: 242926358}
-  timeLineControll: {fileID: 2060129512}
+  timeLineControll_4: {fileID: 2060129513}
   noticeClip: {fileID: 8300000, guid: 5b9f2a36e8342e34187b067c39aa45d1, type: 3}
   StartSmartPhoneUI: {fileID: 1596530216}
   TalkEventPanel: {fileID: 644495045}
@@ -13115,7 +13116,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugFalse
           m_Mode: 1
@@ -13129,7 +13130,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugTure
           m_Mode: 1
@@ -14859,7 +14860,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a51bdf84159669d4480c9483ce83c2a3, type: 2}
   SignPanel: {fileID: 942010724}
   displayDuration: 3
-  TimeLineControll: {fileID: 2060129512}
+  TimeLineControll: {fileID: 0}
   isOpend: 0
   isTimeline: 0
   isTalking: 0
@@ -17372,6 +17373,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834361641}
   m_CullTransparentMesh: 1
+--- !u!1 &1838509123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1838509125}
+  - component: {fileID: 1838509124}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1838509124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838509123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b5868a437b4a646a38e685934f3046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startupImage: {fileID: 868914238}
+  displayTime: 5
+--- !u!4 &1838509125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838509123}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.719292, y: 4.2622147, z: 69.404465}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1853146361
 GameObject:
   m_ObjectHideFlags: 0
@@ -18852,7 +18899,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugTure
           m_Mode: 1
@@ -18866,7 +18913,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: FlugFalse
           m_Mode: 1
@@ -18880,7 +18927,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1162205026}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TalkEventController, Assembly-CSharp
           m_MethodName: Objectactivetrue
           m_Mode: 1
@@ -18894,7 +18941,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1162205026}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TalkEventController, Assembly-CSharp
           m_MethodName: SelectEvent1
           m_Mode: 1
@@ -18908,7 +18955,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2060129512}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: TimeLineControll, Assembly-CSharp
           m_MethodName: ShowMapFlag
           m_Mode: 1
@@ -19490,7 +19537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2060129511}
-  - component: {fileID: 2060129512}
+  - component: {fileID: 2060129513}
   m_Layer: 0
   m_Name: TimelineController
   m_TagString: Untagged
@@ -19513,7 +19560,7 @@ Transform:
   m_Father: {fileID: 768598660}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2060129512
+--- !u!114 &2060129513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19522,7 +19569,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2060129510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 339b85a3c7fb3dc4ba425db49dbcc8be, type: 3}
+  m_Script: {fileID: 11500000, guid: 1373812a19ea71949aa6c011a31e2a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToActivate:
